@@ -5,7 +5,7 @@ Mobile application written of flutter
 **Goals**
 ----------
 
--This is a simple mobile application with mini applications inside that will help people in some way and will be used like a Swiss knife
+- This is a simple mobile application with mini applications inside that will help people in some way and will be used like a Swiss knife
 
 **Team members**
 ----------
@@ -16,18 +16,18 @@ Mobile application written of flutter
 
 **Scope and Features**
 ----------
--Ensuring the deployment and functionality of mobile app on the Flutter
--Exploring / reporting any issues and bugs we encounter along with the project for future ramifications
--Flutter renders every pixel of the screen. This means that all widgets on a mobile device will look the same.
--Development process  using flutter helps to save a lot of time and money.
--Testing can be done using the Flutter SDK and you can get feedback accordingly.
+- Ensuring the deployment and functionality of mobile app on the Flutter
+- Exploring / reporting any issues and bugs we encounter along with the project for future ramifications
+- Flutter renders every pixel of the screen. This means that all widgets on a mobile device will look the same.
+- Development process  using flutter helps to save a lot of time and money.
+- Testing can be done using the Flutter SDK and you can get feedback accordingly.
 
 **Getting Started**
 ----------
--For help getting started with Flutter, view our online
+- For help getting started with Flutter, view our online
 [documentation](http://flutter.io/).
--also watch [this](https://youtu.be/5izFFbdHnWY) video.
+- also watch [this](https://youtu.be/5izFFbdHnWY) video.
 
 **Acceptance Criteria**
 ----------
--Developing application on Dart flutter
+- Developing application on Dart flutter
