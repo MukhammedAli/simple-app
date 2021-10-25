@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp2/colors.dart';
 import 'package:myapp2/services/world_time.dart';
 
 class Home extends StatefulWidget {
@@ -19,6 +20,19 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       backgroundColor: bgColor,
+        appBar: AppBar(
+          toolbarHeight: 80,
+          centerTitle: true,
+          backgroundColor: blueMP,
+          primary: false,
+          title: Text("Main Page",
+              style:TextStyle(
+              fontSize: 50,
+              fontWeight: FontWeight.w300,
+              color: white,
+            ),
+          ),
+        ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
