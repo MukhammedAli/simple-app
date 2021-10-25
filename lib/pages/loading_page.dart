@@ -8,12 +8,12 @@ class LoadingPage extends StatelessWidget{
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.all_inclusive_rounded,
             color: Colors.amber,
             size: 50.0,
           ),
-              Center(
+              const Center(
                 child: Text(
                 'Simple App',
                 style: TextStyle(
@@ -24,7 +24,7 @@ class LoadingPage extends StatelessWidget{
             ),
           ),
               ),
-          SizedBox(height: 5.0),
+          const SizedBox(height: 5.0),
           Text(
             'Bunch of useful apps',
             style: TextStyle(
