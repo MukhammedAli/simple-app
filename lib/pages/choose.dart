@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/colors.dart';
+import 'package:myapp2/pages/Search.dart';
+import 'package:myapp2/pages/Settings.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/services/world_time.dart';
@@ -14,31 +16,33 @@ class ListOfWidgets extends StatefulWidget {
 }
 
 class _ListOfWidgetsState extends State<ListOfWidgets> {
+  int _selectedTab = 0;
+
+
+
+  void onSelected(int index){
+    if(_selectedTab == index) return;
+    setState(() {
+      _selectedTab = index;
+    });
+  }
+
+
+
   List<Route> myRoute = [
     MaterialPageRoute(builder: (_) => Home()),
     MaterialPageRoute(builder: (_) => ChooseLocation())
+  ];
+  static const List<Widget> _widgetOptions = <Widget>[
+    Safe(myRoute: [],),
+    Search(),
+    Settings(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: dark,
-      appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-        backgroundColor: Colors.purple,
-        title: const Text(
-          "Choose application",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
-            color: Colors.black,
-          ),
-        ),
-        toolbarHeight: 70,
-        centerTitle: true,
-        elevation: 0,
+
 
         // appBar: AppBar(
         //   automaticallyImplyLeading: false,
@@ -62,7 +66,60 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
         //         height: 4.0,
         //       ),
         //       preferredSize: const Size.fromHeight(4.0)),
+
+      body: Center(
+        child: _widgetOptions[_selectedTab],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedTab,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Main",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: "Search",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: "Settings",
+          ),
+        ],
+        onTap: onSelected,
+      ),
+    );
+  }
+}
+
+class Safe extends StatelessWidget {
+  const Safe({
+    Key? key,
+    required this.myRoute,
+  }) : super(key: key);
+
+  final List<Route> myRoute;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: dark,
+        appBar: AppBar(
+        iconTheme: const IconThemeData(
+        color: Colors.black, //change your color here
+    ),
+    backgroundColor: Colors.purple,
+    title: const Text(
+    "Choose application",
+    style: TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.w300,
+    color: Colors.black,
+    ),
+    ),
+    toolbarHeight: 70,
+    centerTitle: true,
+    elevation: 0,),
       body: SafeArea(
         child: ListView.builder(
             padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),

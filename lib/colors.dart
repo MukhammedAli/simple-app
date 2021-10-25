@@ -16,3 +16,7 @@ const Color indigo = Colors.indigo;
 
 const Color dark = Color.fromRGBO(50, 46, 57, 1.0);
 
+abstract class AppColor{
+ static Color dark = Color.fromRGBO(50, 46, 57, 1.0);
+}
+

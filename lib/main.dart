@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp2/colors.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
@@ -16,4 +17,10 @@ void main() => runApp(MaterialApp(
         //'/' : (context) => const LoadingPage(),
         //'/home': (context) => const ListOfWidgets(),
       },
+      theme: ThemeData(
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Colors.purple,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: AppColor.dark),
+      ),
     ));
