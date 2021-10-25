@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/pages/choose_loc.dart';
-import 'package:myapp2/pages/loading_page.dart';
+import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/pages/choose.dart';
 
 void main() => runApp(MaterialApp(
       title: 'Flutter project',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/first',
       routes: {
-        '/' : (context) => LoadingPage(),
-        '/home': (context) => ListOfWidgets(),
-        '/location': (context) => ChooseLocation(),
-        '/weather-app': (context) => Home(),
+        '/first': (context) => const LoadingPage(),
+        '/second': (context) => const ListOfWidgets(),
+        '/weather-app': (context) => const Home(),
+        '/weather-app-location': (context) => const ChooseLocation(),
+        //'/' : (context) => const LoadingPage(),
+        //'/home': (context) => const ListOfWidgets(),
       },
     ));

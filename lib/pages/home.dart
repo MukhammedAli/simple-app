@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp2/colors.dart';
-import 'package:myapp2/services/world_time.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -20,19 +20,37 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       backgroundColor: bgColor,
-        appBar: AppBar(
-          toolbarHeight: 80,
-          centerTitle: true,
-          backgroundColor: blueMP,
-          primary: false,
-          title: Text("Main Page",
-              style:TextStyle(
-              fontSize: 50,
-              fontWeight: FontWeight.w300,
-              color: white,
-            ),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        backgroundColor: Colors.blue[600],
+        title: const Text(
+          "Time application",
+          style: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w300,
+            color: Colors.black,
           ),
         ),
+        toolbarHeight: 70,
+        centerTitle: true,
+        elevation: 0,
+      ),
+      // appBar: AppBar(
+      //   toolbarHeight: 90,
+      //   centerTitle: true,
+      //   backgroundColor: blueMP,
+      //   primary: false,
+      //   title: const Text(
+      //     "Main Page",
+      //     style: TextStyle(
+      //       fontSize: 50,
+      //       fontWeight: FontWeight.w300,
+      //       color: white,
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -47,8 +65,8 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 FlatButton.icon(
                   onPressed: () async {
-                    dynamic result =
-                        await Navigator.pushNamed(context, '/location');
+                    dynamic result = await Navigator.pushNamed(
+                        context, '/weather-app-location');
                     setState(() {
                       data = {
                         'time': result['time'],
@@ -67,13 +85,13 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.grey[300]),
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       data['location'],
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 28.0,
                         letterSpacing: 2.0,
                         color: Colors.white,
@@ -81,12 +99,12 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Text(
                   data['time'],
-                  style: TextStyle(fontSize: 66.0, color: Colors.white),
+                  style: const TextStyle(fontSize: 66.0, color: Colors.white),
                 ),
               ],
             ),
