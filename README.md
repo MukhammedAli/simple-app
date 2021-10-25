@@ -12,6 +12,7 @@ Mobile application written of flutter
 
 - Oktamov Saidakmal 190109003@stu.sdu.edu.kz, https://github.com/M1racle-Heen
 - Alekulov Zhangerkhan 200113001@stu.sdu.edu.kz, https://github.com/JakenzeWWS
+- Khamzayev Mukhammed Ali 190103412@stu.sdu.edu.kz, https://github.com/MukhammedAli
 - 
 ...
 
