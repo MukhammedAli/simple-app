@@ -28,15 +28,9 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Colors.white, //change your color here
-        ),
-        title: Text('BMI Calculator'),
-        centerTitle: true,
+        title: const Text('BMI Calculator'),
         backgroundColor: const Color(0xFF0A0E21),
-        automaticallyImplyLeading: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -108,15 +102,15 @@ class _InputPageState extends State<InputPage> {
                       ),
                       SliderTheme(
                         data: SliderTheme.of(context).copyWith(
-                          thumbShape: const RoundSliderThumbShape(
-                              enabledThumbRadius: 15.0),
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         ),
                         child: Slider(
                           value: height.toDouble(),
                           min: 120,
                           max: 220,
-                          activeColor: const Color(0xFFEB1555),
-                          inactiveColor: const Color(0xFF8D8E98),
+                          activeColor: Color(0xFFEB1555),
+                          inactiveColor: Color(0xFF8D8E98),
                           onChanged: (double newValue) {
                             setState(() {
                               height = newValue.round();

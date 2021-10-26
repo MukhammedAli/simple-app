@@ -67,16 +67,16 @@ class Safe extends StatefulWidget {
     required this.myRoute,
   }) : super(key: key);
 
-  final List<String> myRoute;
+  final List<Route> myRoute;
 
   @override
   State<Safe> createState() => _SafeState();
 }
 
 class _SafeState extends State<Safe> {
-  List<String> myRoute = [
-    '/weather-app',
-    '/bmi-app'
+  List<Route> myRoute = [
+    MaterialPageRoute(builder: (_) => const Home()),
+    MaterialPageRoute(builder: (_) => BMICalculator())
   ];
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class _SafeState extends State<Safe> {
                                 'isDayTime': instance.isDayTime,
                               });
                         } else {
-                          Navigator.of(context).pushNamed(myRoute[index]);
+                          Navigator.of(context).push(myRoute[index]);
                         }
                       },
                       child: Card(

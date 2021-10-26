@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/bmimainpage.dart';
 import 'package:myapp2/colors.dart';
-import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
@@ -17,7 +16,7 @@ void main() => runApp(
           '/second': (context) => const ListOfWidgets(),
           '/weather-app': (context) => const Home(),
           '/weather-app-location': (context) => const ChooseLocation(),
-          '/bmi-app': (context) => InputPage(),
+          '/bmi-app': (context) => BMICalculator(),
           //'/' : (context) => const LoadingPage(),
           //'/home': (context) => const ListOfWidgets(),
         },
