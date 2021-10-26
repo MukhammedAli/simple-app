@@ -14,7 +14,7 @@ Mobile application written of flutter
 - Alekulov Zhangerkhan 200113001@stu.sdu.edu.kz, https://github.com/JakenzeWWS
 - Jumagaliyev Ruslan 190103408@stu.sdu.edu.kz, https://github.com/qReely
 - Khozhakhmed Olzhas 200113010@stu.edu.kz, https://github.com/Olzhas-kh
-...
+- Khamzayev Mukhammed Ali 190103412@stu.sdu.edu.kz, https://github.com/MukhammedAli
 
 **Scope and Features**
 ----------
