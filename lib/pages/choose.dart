@@ -76,7 +76,7 @@ class Safe extends StatefulWidget {
 class _SafeState extends State<Safe> {
   List<Route> myRoute = [
     MaterialPageRoute(builder: (_) => const Home()),
-    MaterialPageRoute(builder: (_) => BMICalculator())
+    MaterialPageRoute(builder: (_) => const BMICalculator())
   ];
   @override
   Widget build(BuildContext context) {

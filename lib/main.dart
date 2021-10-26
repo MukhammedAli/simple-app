@@ -16,7 +16,7 @@ void main() => runApp(
           '/second': (context) => const ListOfWidgets(),
           '/weather-app': (context) => const Home(),
           '/weather-app-location': (context) => const ChooseLocation(),
-          '/bmi-app': (context) => BMICalculator(),
+          '/bmi-app': (context) => const BMICalculator(),
           //'/' : (context) => const LoadingPage(),
           //'/home': (context) => const ListOfWidgets(),
         },
