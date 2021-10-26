@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color lightBlue =  Color.fromRGBO(18, 136, 200, 1.0);
+const Color lightBlue = Color.fromRGBO(18, 136, 200, 1.0);
 
 const Color blueMP = Colors.blueAccent;
 
@@ -16,7 +16,6 @@ const Color indigo = Colors.indigo;
 
 const Color dark = Color.fromRGBO(50, 46, 57, 1.0);
 
-abstract class AppColor{
- static Color dark = Color.fromRGBO(50, 46, 57, 1.0);
+abstract class AppColor {
+  static Color dark = const Color.fromRGBO(50, 46, 57, 1.0);
 }
-

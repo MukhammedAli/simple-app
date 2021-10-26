@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../colors.dart';
+
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
 
@@ -28,8 +29,13 @@ class _SearchState extends State<Search> {
         ),
         toolbarHeight: 70,
         centerTitle: true,
-        elevation: 0,),
-      body: Center(child: Text("Search",style: TextStyle(color: Colors.white),)),
+        elevation: 0,
+      ),
+      body: Center(
+          child: Text(
+        "Search",
+        style: TextStyle(color: Colors.white),
+      )),
     );
   }
 }
