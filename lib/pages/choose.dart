@@ -74,10 +74,7 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
-  List<String> myRoute = [
-    '/weather-app',
-    '/bmi-app'
-  ];
+  List<String> myRoute = ['/weather-app', '/bmi-app'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,12 +107,12 @@ class _SafeState extends State<Safe> {
                 child: Stack(
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () async {
+                      onTap: () {
                         instance = WorldTime(
-                            location: 'Almaty',
+                            location: 'Welcome page',
                             flag: 'kazakstan.png',
                             url: "Asia/Almaty");
-                        await instance.getTime();
+                        instance.getTime();
                         if (index == 0) {
                           Navigator.pushNamed(context, '/weather-app',
                               arguments: {
