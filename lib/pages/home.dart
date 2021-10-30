@@ -24,6 +24,14 @@ class _HomeState extends State<Home> {
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Colors.blue[600],
         title: const Text(
           "Time application",
