@@ -28,14 +28,15 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.white, //change your color here
         ),
-        title: const Text('BMI Calculator'),
+        title: Text('BMI Calculator'),
         centerTitle: true,
-        automaticallyImplyLeading: true,
         backgroundColor: const Color(0xFF0A0E21),
+        automaticallyImplyLeading: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
