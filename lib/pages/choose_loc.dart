@@ -44,6 +44,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),

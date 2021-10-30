@@ -6,7 +6,7 @@ import 'package:myapp2/pages/Settings.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/services/world_time.dart';
 
-final widgets = ['Weather app', 'BMI Calculator'];
+final widgets = ['Weather app', 'BMI Calculator', 'Music Player'];
 
 class ListOfWidgets extends StatefulWidget {
   const ListOfWidgets({Key? key}) : super(key: key);
@@ -74,7 +74,7 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
-  List<String> myRoute = ['/weather-app', '/bmi-app'];
+  List<String> myRoute = ['/weather-app', '/bmi-app', '/music_player'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +82,14 @@ class _SafeState extends State<Safe> {
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
+        ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.purple,
         title: const Text(
