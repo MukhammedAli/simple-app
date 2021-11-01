@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/notifications/widgets/task_list.dart';
+import 'package:myapp2/notifications/screens/add_tasks.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
 
+  Widget buildButtomSheet(BuildContext context) => AddTasksScreen();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
+      floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
+        onPressed: () {
+          showModalBottomSheet(context: context, builder: buildButtomSheet);
+        },
       ),
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
