@@ -35,7 +35,7 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
       myRoute: [],
     ),
     const Search(),
-    const Settings(),
+    SettingsPage(),
   ];
 
   @override
