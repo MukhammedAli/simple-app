@@ -18,7 +18,7 @@ class LoadingPage extends StatelessWidget {
           Center(
             child: FlatButton(
               onPressed: () async {
-                Navigator.pushNamed(context, '/second');
+                Navigator.pushReplacementNamed(context, '/second');
               },
               child: const Text(
                 'Simple App',

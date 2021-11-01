@@ -35,7 +35,7 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
       myRoute: [],
     ),
     const Search(),
-    const Settings(),
+    SettingsPage(),
   ];
 
   @override
@@ -93,21 +93,13 @@ class _SafeState extends State<Safe> {
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 40,
-          ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
         backgroundColor: Colors.purple,
         title: const Text(
           "Choose application",
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w300,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         toolbarHeight: 70,

@@ -24,7 +24,7 @@ class _SearchState extends State<Search> {
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w300,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         toolbarHeight: 70,
