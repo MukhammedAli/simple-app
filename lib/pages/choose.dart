@@ -6,7 +6,12 @@ import 'package:myapp2/pages/Settings.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/services/world_time.dart';
 
-final widgets = ['Weather app', 'BMI Calculator', 'Music Player'];
+final widgets = [
+  'Weather app',
+  'BMI Calculator',
+  'Music Player',
+  'Example page'
+];
 
 class ListOfWidgets extends StatefulWidget {
   const ListOfWidgets({Key? key}) : super(key: key);
@@ -74,7 +79,12 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
-  List<String> myRoute = ['/weather-app', '/bmi-app', '/music_player'];
+  List<String> myRoute = [
+    '/weather-app',
+    '/bmi-app',
+    '/music_player',
+    '/test_page'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
