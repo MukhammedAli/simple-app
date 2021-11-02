@@ -10,7 +10,8 @@ final widgets = [
   'Weather app',
   'BMI Calculator',
   'Music Player',
-  'Example page'
+  'Example page',
+  'Note'
 ];
 
 class ListOfWidgets extends StatefulWidget {
@@ -83,7 +84,8 @@ class _SafeState extends State<Safe> {
     '/weather-app',
     '/bmi-app',
     '/music_player',
-    '/test_page'
+    '/test_page',
+    '/notification'
   ];
   @override
   Widget build(BuildContext context) {
