@@ -4,7 +4,8 @@ import 'reusable_card.dart';
 import 'bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
-  ResultsPage(
+  // ignore: use_key_in_widget_constructors
+  const ResultsPage(
       {required this.bmiResult,
       required this.resultText,
       required this.interpretation});
@@ -18,7 +19,7 @@ class ResultsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+        title: const Text('BMI Calculator'),
         backgroundColor: const Color(0xFF0A0E21),
         centerTitle: true,
       ),
@@ -28,9 +29,9 @@ class ResultsPage extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: Container(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             alignment: Alignment.bottomLeft,
-            child: Text('Your results', style: kTitleTextStyle),
+            child: const Text('Your results', style: kTitleTextStyle),
           )),
           Expanded(
               flex: 5,

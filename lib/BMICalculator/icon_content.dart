@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'constants.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({this.icon, this.label});
+  // ignore: use_key_in_widget_constructors
+  const IconContent({this.icon, this.label});
 
   final IconData? icon;
   final String? label;

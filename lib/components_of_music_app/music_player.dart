@@ -141,7 +141,7 @@ class _MusicAppState extends State<MusicApp> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.transparent,
         centerTitle: true,
         title: const Text(
           'My Playlist',

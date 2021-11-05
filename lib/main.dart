@@ -8,6 +8,7 @@ import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/pages/choose.dart';
+import 'package:myapp2/pages/loading.dart';
 import 'package:myapp2/using_mvc/trying_to_use_mvc.dart';
 import 'package:myapp2/notifications/notificationsmain.dart';
 
@@ -15,16 +16,17 @@ void main() => runApp(
       MaterialApp(
         title: 'Flutter project',
         debugShowCheckedModeBanner: false,
-        initialRoute: '/first',
+        initialRoute: '/',
         routes: {
           '/first': (context) => const LoadingPage(),
           '/second': (context) => const ListOfWidgets(),
           '/weather-app': (context) => const Home(),
           '/weather-app-location': (context) => const ChooseLocation(),
-          '/bmi-app': (context) => InputPage(),
+          '/bmi-app': (context) => const InputPage(),
           '/music_player': (context) => const MusicApp(),
           '/test_page': (context) => const MyExample(),
           '/notification': (context) => const TasksScreen(),
+          '/': (context) => const Loading(),
           //'/' : (context) => const LoadingPage(),
           //'/home': (context) => const ListOfWidgets(),
         },
