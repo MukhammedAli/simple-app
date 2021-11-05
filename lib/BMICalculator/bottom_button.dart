@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton({required this.onTap, required this.buttonTitle});
+  // ignore: use_key_in_widget_constructors
+  const BottomButton({required this.onTap, required this.buttonTitle});
 
   final String buttonTitle;
   final Function onTap;
@@ -19,7 +20,7 @@ class BottomButton extends StatelessWidget {
         child: Center(child: Text(buttonTitle, style: kLargeButtonTextStyle)),
         color: kBottomContainerColor,
         margin: const EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 20.0),
+        padding: const EdgeInsets.only(bottom: 20.0),
         width: double.infinity,
         height: kBottomContainerHeight,
       ),

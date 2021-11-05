@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.color, this.width = 170.0, this.cardChild});
+  // ignore: use_key_in_widget_constructors
+  const ReusableCard({required this.color, this.width = 170.0, this.cardChild});
 
   final double width;
   final Color? color;

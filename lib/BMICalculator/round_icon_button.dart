@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon, required this.onPressed});
+  // ignore: use_key_in_widget_constructors
+  const RoundIconButton({required this.icon, required this.onPressed});
 
   final IconData icon;
   final Function onPressed;

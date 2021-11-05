@@ -15,6 +15,8 @@ enum Gender {
 }
 
 class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -33,7 +35,7 @@ class _InputPageState extends State<InputPage> {
         iconTheme: const IconThemeData(
           color: Colors.white, //change your color here
         ),
-        title: Text('BMI Calculator'),
+        title: const Text('BMI Calculator'),
         centerTitle: true,
         backgroundColor: const Color(0xFF0A0E21),
         automaticallyImplyLeading: true,
@@ -56,7 +58,7 @@ class _InputPageState extends State<InputPage> {
                   color: selectedGender == Gender.male
                       ? kActiveCardColor
                       : kInactiveCardColor,
-                  cardChild: IconContent(
+                  cardChild: const IconContent(
                     icon: FontAwesomeIcons.mars,
                     label: 'MALE',
                   ),
@@ -74,7 +76,7 @@ class _InputPageState extends State<InputPage> {
                   color: selectedGender == Gender.female
                       ? kActiveCardColor
                       : kInactiveCardColor,
-                  cardChild: IconContent(
+                  cardChild: const IconContent(
                       icon: FontAwesomeIcons.venus, label: 'FEMALE'),
                 ),
               ),
@@ -135,7 +137,7 @@ class _InputPageState extends State<InputPage> {
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('WEIGHT', style: kLabelTextStyle),
+                    const Text('WEIGHT', style: kLabelTextStyle),
                     Text(
                       weight.toString(),
                       style: kNumberTextStyle,
@@ -150,7 +152,7 @@ class _InputPageState extends State<InputPage> {
                                 weight--;
                               });
                             }),
-                        SizedBox(
+                        const SizedBox(
                           width: 10.0,
                         ),
                         RoundIconButton(
@@ -173,7 +175,7 @@ class _InputPageState extends State<InputPage> {
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'AGE',
                       style: kLabelTextStyle,
                     ),
@@ -189,7 +191,7 @@ class _InputPageState extends State<InputPage> {
                             });
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10.0,
                         ),
                         RoundIconButton(

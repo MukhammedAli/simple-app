@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/bmimainpage.dart';
+import 'package:myapp2/BMICalculator/input_page.dart';
+import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/colors.dart';
+import 'package:myapp2/components_of_music_app/music_player.dart';
+import 'package:myapp2/notifications/screens/taskscreen.dart';
 import 'package:myapp2/pages/Search.dart';
 import 'package:myapp2/pages/Settings.dart';
+import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/pages/home.dart';
 import 'package:myapp2/services/world_time.dart';
+import 'package:myapp2/using_mvc/trying_to_use_mvc.dart';
 
 final widgets = [
   'Weather app',
@@ -80,6 +86,13 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
+  List<Widget>? myWidget = [
+    const Home(),
+    InputPage(),
+    const MusicApp(),
+    const MyExample(),
+    const TasksScreen()
+  ];
   List<String> myRoute = [
     '/weather-app',
     '/bmi-app',
@@ -134,7 +147,8 @@ class _SafeState extends State<Safe> {
                                 'isDayTime': instance.isDayTime,
                               });
                         } else {
-                          Navigator.of(context).pushNamed(myRoute[index]);
+                          Navigator.push(context,
+                              BouncyPageRoute(widget: myWidget![index]));
                         }
                       },
                       child: Card(

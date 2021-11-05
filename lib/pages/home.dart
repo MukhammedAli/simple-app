@@ -1,4 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:myapp2/BauncyPageRoute.dart';
+import 'package:myapp2/pages/choose_loc.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -73,8 +77,8 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 FlatButton.icon(
                   onPressed: () async {
-                    dynamic result = await Navigator.pushNamed(
-                        context, '/weather-app-location');
+                    dynamic result = await Navigator.push(context,
+                        BouncyPageRoute(widget: const ChooseLocation()));
                     setState(() {
                       data = {
                         'time': result['time'],
