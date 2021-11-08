@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
-import 'package:myapp2/pages/choose.dart';
+import 'package:myapp2/MainPage/choose.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key}) : super(key: key);
