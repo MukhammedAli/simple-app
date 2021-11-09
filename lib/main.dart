@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:myapp2/BMICalculator/bmimainpage.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/colors.dart';
@@ -9,11 +10,14 @@ import 'package:myapp2/pages/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/pages/choose.dart';
 import 'package:myapp2/pages/loading.dart';
+import 'package:myapp2/translation/localeString.dart';
 import 'package:myapp2/using_mvc/trying_to_use_mvc.dart';
 import 'package:myapp2/notifications/notificationsmain.dart';
 
 void main() => runApp(
-      MaterialApp(
+      GetMaterialApp(
+        translations: LocalString(),
+        locale: Locale('en','US'),
         title: 'Flutter project',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
@@ -31,10 +35,7 @@ void main() => runApp(
           //'/home': (context) => const ListOfWidgets(),
         },
         theme: ThemeData(
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.purple,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: AppColor.dark),
+          scaffoldBackgroundColor: AppColor.dark,
         ),
       ),
     );

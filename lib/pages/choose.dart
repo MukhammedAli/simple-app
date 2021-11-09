@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/bmimainpage.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
@@ -51,24 +52,15 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
       body: Center(
         child: _widgetOptions[_selectedTab],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: AppColor.dark,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Main",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
-          ),
+          Icon(Icons.home, size: 35),
+          Icon(Icons.search, size: 35),
+          Icon(Icons.settings, size: 35),
         ],
         onTap: onSelected,
-      ),
+      )
     );
   }
 }

@@ -1,19 +1,69 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Settings extends StatefulWidget {
   @override
   _SettingsState createState() => _SettingsState();
 }
+final List locale=[
+  {'name':'ENGLISH','locale': Locale('en','US')},
+  {'name':'RUSSION','locale': Locale('ru','RU')},
+
+];
+updateLanguage(Locale locale){
+  Get.back();
+  Get.updateLocale(locale);
+}
+builddialog(BuildContext context){
+  showDialog(context: context, builder: (builder){
+    return GestureDetector(
+      onTap: (){
+        AlertDialog(
+          title: Text('Choose a language'),
+          content: Container(
+            width: double.maxFinite,
+            child: ListView.separated(
+                shrinkWrap: true,
+                itemBuilder: (context,index){
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                        onTap: (){
+                          updateLanguage(locale[index]['locale']);
+                        },
+                        child: Text(locale[index]['name'])),
+                  );
+                },
+                separatorBuilder: (context,index){
+                  return Divider(
+                    color: Colors.blue,
+                  );
+                },
+                itemCount: locale.length),
+          ),
+        );
+      },
+
+    );
+  });
+
+}
+
 
 class _SettingsState extends State<Settings> {
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple,
         title: Text(
-            'Settings',
+            'Settings'.tr,
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w300,
@@ -39,7 +89,7 @@ class _SettingsState extends State<Settings> {
                     width: 8,
                   ),
                   Text(
-                    "Account",
+                    "Account".tr,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -51,11 +101,11 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildAccountOptionRow(context, "Change password"),
-              buildAccountOptionRow(context, "Content settings"),
-              buildAccountOptionRow(context, "Social"),
-              buildAccountOptionRow(context, "Language"),
-              buildAccountOptionRow(context, "Privacy and security"),
+              buildLanguageOptionRow(context, "Change_password".tr),
+              buildAccountOptionRow(context, "Content_settings".tr),
+              buildAccountOptionRow(context, "Background".tr),
+              buildLanguageOptionRow(context, "Language".tr),
+              buildAccountOptionRow(context, "Privacy".tr),
               SizedBox(
                 height: 40,
               ),
@@ -69,7 +119,7 @@ class _SettingsState extends State<Settings> {
                     width: 8,
                   ),
                   Text(
-                    "Notifications",
+                    "Notifications".tr,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -81,9 +131,9 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildNotificationOptionRow("New for you", true),
-              buildNotificationOptionRow("Account activity", true),
-              buildNotificationOptionRow("Opportunity", false),
+              buildNotificationOptionRow("New_for_you".tr, true),
+              buildNotificationOptionRow("Account_activity".tr, true),
+              buildNotificationOptionRow("Opportunity".tr, false),
               SizedBox(
                 height: 50,
               ),
@@ -93,7 +143,7 @@ class _SettingsState extends State<Settings> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   onPressed: () {},
-                  child: Text("SIGN OUT",
+                  child: Text("SIGN_OUT".tr,
                       style: TextStyle(
                           fontSize: 16, letterSpacing: 2.2, color: Colors.black)),
                 ),
@@ -148,7 +198,7 @@ class _SettingsState extends State<Settings> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text("Close")),
+                      child: Text("Close".tr)),
                 ],
               );
             });
@@ -174,5 +224,64 @@ class _SettingsState extends State<Settings> {
         ),
       ),
     );
+
+
+
   }
+}
+
+GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
+  return GestureDetector(
+    onTap: () {
+      showDialog(
+          context: context,
+
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Choose a language'),
+              content: Container(
+                width: double.maxFinite,
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                            onTap: (){
+                              updateLanguage(locale[index]['locale']);
+                            },
+                            child: Text(locale[index]['name'])),
+                      );
+                    },
+                    separatorBuilder: (context,index){
+                      return Divider(
+                        color: Colors.blue,
+                      );
+                    },
+                    itemCount: locale.length),
+              ),
+            );
+          });
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[600],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
 }
