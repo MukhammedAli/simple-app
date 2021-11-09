@@ -8,7 +8,7 @@ class Settings extends StatefulWidget {
 }
 final List locale=[
   {'name':'ENGLISH','locale': Locale('en','US')},
-  {'name':'RUSSION','locale': Locale('ru','RU')},
+  {'name':'RUSSIAN','locale': Locale('ru','RU')},
 
 ];
 updateLanguage(Locale locale){
@@ -90,7 +90,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Account".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ],
               ),
@@ -101,8 +101,8 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildLanguageOptionRow(context, "Change_password".tr),
-              buildAccountOptionRow(context, "Content_settings".tr),
+              buildLanguageOptionRow(context, "Change password".tr),
+              buildAccountOptionRow(context, "Content settings".tr),
               buildAccountOptionRow(context, "Background".tr),
               buildLanguageOptionRow(context, "Language".tr),
               buildAccountOptionRow(context, "Privacy".tr),
@@ -120,7 +120,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Notifications".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ],
               ),
@@ -131,23 +131,26 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildNotificationOptionRow("New_for_you".tr, true),
-              buildNotificationOptionRow("Account_activity".tr, true),
-              buildNotificationOptionRow("Opportunity".tr, false),
-              SizedBox(
-                height: 50,
-              ),
+              buildNotificationOptionRow("New for you".tr, true),
+              buildNotificationOptionRow("Account activity".tr, true),
+              buildNotificationOptionRow("Updates".tr, false),
               Center(
-                child: OutlineButton(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  onPressed: () {},
-                  child: Text("SIGN_OUT".tr,
-                      style: TextStyle(
-                          fontSize: 16, letterSpacing: 2.2, color: Colors.black)),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(width: 1.0, color: Colors.white)
+                    ),
+                    // padding: EdgeInsets.symmetric(horizontal: 40),
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(20)),
+                    onPressed: () {},
+                    child: Text("SIGN OUT".tr,
+                        style: TextStyle(
+                            fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -164,7 +167,7 @@ class _SettingsState extends State<Settings> {
           style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[600]),
+              color: Colors.grey[300]),
         ),
         Transform.scale(
             scale: 0.7,
@@ -213,7 +216,7 @@ class _SettingsState extends State<Settings> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey[600],
+                color: Colors.grey[300],
               ),
             ),
             Icon(
@@ -273,7 +276,7 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[600],
+              color: Colors.grey[300],
             ),
           ),
           Icon(
