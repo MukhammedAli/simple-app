@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
-import 'package:myapp2/MainPage/choose.dart';
+import 'package:myapp2/login/login.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -21,8 +21,9 @@ class LoadingPage extends StatelessWidget {
             // ignore: deprecated_member_use
             child: FlatButton(
               onPressed: () async {
-                Navigator.push(
-                    context, BouncyPageRoute(widget: const ListOfWidgets()));
+                Navigator.push(context, BouncyPageRoute(widget: LogInScreen()));
+                // Navigator.push(
+                //     context, BouncyPageRoute(widget: const ListOfWidgets()));
               },
               child: const Text(
                 'Simple App',

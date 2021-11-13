@@ -51,19 +51,18 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions[_selectedTab],
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: AppColor.dark,
-        items: const [
-          Icon(Icons.home, size: 35),
-          Icon(Icons.search, size: 35),
-          Icon(Icons.settings, size: 35),
-        ],
-        onTap: onSelected,
-      )
-    );
+        body: Center(
+          child: _widgetOptions[_selectedTab],
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: AppColor.dark,
+          items: const [
+            Icon(Icons.home, size: 35),
+            Icon(Icons.search, size: 35),
+            Icon(Icons.settings, size: 35),
+          ],
+          onTap: onSelected,
+        ));
   }
 }
 
@@ -82,7 +81,7 @@ class Safe extends StatefulWidget {
 class _SafeState extends State<Safe> {
   List<Widget>? myWidget = [
     const Home(),
-    InputPage(),
+    const InputPage(),
     const MusicApp(),
     const MyExample(),
     const TasksScreen(),
