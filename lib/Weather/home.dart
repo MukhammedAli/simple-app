@@ -49,20 +49,6 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0,
       ),
-      // appBar: AppBar(
-      //   toolbarHeight: 90,
-      //   centerTitle: true,
-      //   backgroundColor: blueMP,
-      //   primary: false,
-      //   title: const Text(
-      //     "Main Page",
-      //     style: TextStyle(
-      //       fontSize: 50,
-      //       fontWeight: FontWeight.w300,
-      //       color: white,
-      //     ),
-      //   ),
-      // ),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
