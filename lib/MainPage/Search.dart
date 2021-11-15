@@ -13,17 +13,18 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: dark,
+      backgroundColor: white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blueAccent,
         title: const Text(
           "Search",
           style: TextStyle(
-            fontSize: 35,
+            fontSize: 30,
+            fontFamily: 'Bauman',
             fontWeight: FontWeight.w300,
             color: Colors.white,
           ),
@@ -35,7 +36,7 @@ class _SearchState extends State<Search> {
       body: Center(
           child: Text(
         "Search",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.black),
       )),
     );
   }

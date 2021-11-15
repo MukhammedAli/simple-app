@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
+import 'package:myapp2/NewLogin/welcome_page.dart';
 import 'package:myapp2/login/login.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -42,7 +43,8 @@ class LoadingPage extends StatelessWidget {
               ],
               repeatForever: true,
               onTap: () async {
-                Navigator.push(context, BouncyPageRoute(widget: LogInScreen()));
+                Navigator.push(
+                    context, BouncyPageRoute(widget: WelcomeScreen()));
               },
             ),
           ),

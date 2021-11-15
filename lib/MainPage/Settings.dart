@@ -8,51 +8,50 @@ class Settings extends StatefulWidget {
   _SettingsState createState() => _SettingsState();
 }
 
-final List locale=[
-  {'name':'ENGLISH','locale': Locale('en','US')},
-  {'name':'RUSSIAN','locale': Locale('ru','RU')},
+final List locale = [
+  {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
+  {'name': 'RUSSIAN', 'locale': Locale('ru', 'RU')},
 ];
 
-updateLanguage(Locale locale){
+updateLanguage(Locale locale) {
   Get.back();
   Get.updateLocale(locale);
 }
 
-builddialog(BuildContext context){
-  showDialog(context: context, builder: (builder){
-    return GestureDetector(
-      onTap: (){
-        AlertDialog(
-          title: Text('Choose a language'),
-          content: Container(
-            width: double.maxFinite,
-            child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context,index){
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                        onTap: (){
-                          updateLanguage(locale[index]['locale']);
-                        },
-                        child: Text(locale[index]['name'])),
-                  );
-                },
-                separatorBuilder: (context,index){
-                  return Divider(
-                    color: Colors.blue,
-                  );
-                },
-                itemCount: locale.length),
-          ),
+builddialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (builder) {
+        return GestureDetector(
+          onTap: () {
+            AlertDialog(
+              title: Text('Choose a language'),
+              content: Container(
+                width: double.maxFinite,
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                            onTap: () {
+                              updateLanguage(locale[index]['locale']);
+                            },
+                            child: Text(locale[index]['name'])),
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return Divider(
+                        color: Colors.blue,
+                      );
+                    },
+                    itemCount: locale.length),
+              ),
+            );
+          },
         );
-      },
-
-    );
-  });
-
+      });
 }
-
 
 class _SettingsState extends State<Settings> {
   @override
@@ -60,11 +59,12 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blueAccent,
         title: Text(
-            'Settings'.tr,
+          'Settings'.tr,
           style: TextStyle(
-            fontSize: 35,
+            fontFamily: 'Bauman',
+            fontSize: 30,
             fontWeight: FontWeight.w300,
             color: Colors.white,
           ),
@@ -74,7 +74,7 @@ class _SettingsState extends State<Settings> {
         elevation: 0,
       ),
       body: Container(
-        color: dark,
+        color: white,
         child: Scrollbar(
           child: ListView(
             padding: EdgeInsets.only(left: 16, top: 25, right: 16),
@@ -90,7 +90,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Account".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -120,7 +123,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Notifications".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -139,15 +145,16 @@ class _SettingsState extends State<Settings> {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(width: 1.0, color: Colors.white)
-                    ),
+                        side: BorderSide(width: 1.0, color: Colors.white)),
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
                     //     borderRadius: BorderRadius.circular(20)),
                     onPressed: () {},
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
-                            fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
+                            fontSize: 16,
+                            letterSpacing: 2.2,
+                            color: Colors.white)),
                   ),
                 ),
               ),
@@ -165,9 +172,7 @@ class _SettingsState extends State<Settings> {
         Text(
           title,
           style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[300]),
+              fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
         ),
         Transform.scale(
             scale: 0.7,
@@ -215,7 +220,7 @@ class _SettingsState extends State<Settings> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey[300],
+                color: Colors.black,
               ),
             ),
             Icon(
@@ -241,17 +246,17 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
                 width: double.maxFinite,
                 child: ListView.separated(
                     shrinkWrap: true,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               updateLanguage(locale[index]['locale']);
                             },
                             child: Text(locale[index]['name'])),
                       );
                     },
-                    separatorBuilder: (context,index){
+                    separatorBuilder: (context, index) {
                       return Divider(
                         color: Colors.blue,
                       );

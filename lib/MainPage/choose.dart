@@ -108,8 +108,9 @@ class _SafeState extends State<Safe> {
         title: const Text(
           "Choose application",
           style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
+            fontSize: 30,
+            fontFamily: 'Baumans',
+            fontWeight: FontWeight.w200,
             color: Colors.white,
           ),
         ),
