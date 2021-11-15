@@ -5,14 +5,14 @@ import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
-import 'package:myapp2/notifications/screens/taskscreen.dart';
+import 'package:myapp2/NoteApp/screens/taskscreen.dart';
 import 'package:myapp2/MainPage/Search.dart';
 import 'package:myapp2/MainPage/Settings.dart';
 import 'package:myapp2/Weather/choose_loc.dart';
 import 'package:myapp2/Weather/home.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
-import 'package:myapp2/using_mvc/trying_to_use_mvc.dart';
+import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 
 final widgets = [
   'Weather app',

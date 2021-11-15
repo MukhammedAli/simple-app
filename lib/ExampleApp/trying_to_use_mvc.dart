@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:myapp2/using_mvc/controllers/counter_controller.dart';
-import 'package:myapp2/using_mvc/ui/views/counting_column.dart';
+import 'package:myapp2/ExampleApp/controllers/counter_controller.dart';
+import 'package:myapp2/ExampleApp/ui/views/counting_column.dart';
 
 class MyExample extends StatelessWidget {
   const MyExample({Key? key}) : super(key: key);

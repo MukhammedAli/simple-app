@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:myapp2/using_mvc/controllers/commands/count_down_command.dart';
-import 'package:myapp2/using_mvc/controllers/commands/count_up_command.dart';
-import 'package:myapp2/using_mvc/models/data/counter.dart';
+import 'package:myapp2/ExampleApp/controllers/commands/count_down_command.dart';
+import 'package:myapp2/ExampleApp/controllers/commands/count_up_command.dart';
+import 'package:myapp2/ExampleApp/models/data/counter.dart';
 
 //Here we have all the things that a user can see in my example app
 class CountingColumn extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:myapp2/using_mvc/models/data/counter.dart';
+import 'package:myapp2/ExampleApp/models/data/counter.dart';
 
 // this is objects created specifically for this example app
 class CounterModel {

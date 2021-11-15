@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp2/notifications/widgets/task_list.dart';
-import 'package:myapp2/notifications/screens/add_tasks.dart';
+import 'package:myapp2/NoteApp/widgets/task_list.dart';
+import 'package:myapp2/NoteApp/screens/add_tasks.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
