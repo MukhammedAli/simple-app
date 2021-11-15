@@ -98,13 +98,13 @@ class _SafeState extends State<Safe> {
     '/google-maps'
   ];
 
-  final List<String> _widgetIcons = <String>[
-    "icons/weatherIcon.png",
-    "icons/bmiIcon.png",
-    "icons/playerIcon.png",
-    "icons/playerIcon.png",
-    "icons/noteIcon.png",
-    "icons/mapIcon.png"
+  final List<String> _widgetIcon = <String>[
+    'assets/icons/weatherIcon.png',
+    'assets/icons/bmiIcon.png',
+    'assets/icons/playerIcon.png',
+    'assets/icons/playerIcon.png',
+    'assets/icons/noteIcon.png',
+    'assets/icons/mapIcon.png'
   ];
 
   @override
@@ -174,9 +174,13 @@ class _SafeState extends State<Safe> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              const FlutterLogo(size: 48),
+                              Image(
+                                image: AssetImage(_widgetIcon[index]),
+                                width: 60,
+                                height: 60,
+                              ),
                               const SizedBox(
-                                width: 16,
+                                width: 22,
                               ),
                               Expanded(
                                 child: Column(
@@ -198,8 +202,7 @@ class _SafeState extends State<Safe> {
                                   ],
                                 ),
                               ),
-                              ImageIcon(AssetImage(_widgetIcons[index]),
-                                  size: 60, color: Colors.black)
+
                             ],
                           ),
                         ),
