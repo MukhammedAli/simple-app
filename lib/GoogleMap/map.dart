@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class MapScreen extends StatefulWidget {
@@ -42,8 +43,24 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.lightBlue,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         centerTitle: true,
-        title: const Text('Google Maps'),
+        title: Text(
+            'Google Maps',
+            style: GoogleFonts.raleway(
+              fontWeight: FontWeight.w600,
+              fontSize: 40,
+          ),
+        ),
+        toolbarHeight: 70,
       ),
       body: Stack(
         alignment: Alignment.center,

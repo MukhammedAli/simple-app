@@ -16,7 +16,7 @@ class CountingColumn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FloatingActionButton(
-                backgroundColor: Colors.purple,
+                backgroundColor: Colors.lightBlue,
                 child: const Icon(Icons.add),
                 onPressed: () => CountUpCommand().execute(item)),
             Text(
@@ -24,7 +24,7 @@ class CountingColumn extends StatelessWidget {
               style: const TextStyle(fontSize: 48),
             ),
             FloatingActionButton(
-                backgroundColor: Colors.purple,
+                backgroundColor: Colors.lightBlue,
                 child: const Icon(Icons.remove),
                 onPressed: () => CountDownCommand().execute(item)),
           ],
