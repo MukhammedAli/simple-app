@@ -26,3 +26,6 @@ const Color pale = Color.fromRGBO(155, 138, 143, 1.0);
 
 const Color brown = Color.fromRGBO(149, 107, 78, 1.0);
 
+const Color yellow = Color.fromRGBO(235, 190, 88, 1.0);
+
+const Color topaz = Color.fromRGBO(131, 125, 142, 1.0);

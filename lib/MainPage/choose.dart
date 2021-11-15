@@ -6,13 +6,14 @@ import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/NoteApp/screens/taskscreen.dart';
-import 'package:myapp2/MainPage/Search.dart';
-import 'package:myapp2/MainPage/Settings.dart';
+import 'package:myapp2/MainPage/search.dart';
+import 'package:myapp2/MainPage/settings.dart';
 import 'package:myapp2/Weather/choose_loc.dart';
 import 'package:myapp2/Weather/home.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final widgets = [
   'Weather app',
@@ -119,19 +120,21 @@ class _SafeState extends State<Safe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: dark,
+
+      backgroundColor: dark, // background color of a page
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
+          color: Colors.black, // change your color here
         ),
-        backgroundColor: pale,
-        title: const Text(
-          "CHOOSE APPLICATION",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
-            color: darkRed,
+        backgroundColor: topaz, // color of an AppBarr
+        title: Text(
+          "Choose",
+          style: GoogleFonts.raleway(  // font of a main text of AppBar
+            fontSize: 40,
+            fontWeight: FontWeight.w600,
+            color: white,  // color of a text
           ),
         ),
         toolbarHeight: 70,
@@ -170,7 +173,8 @@ class _SafeState extends State<Safe> {
                       },
                       child: Card(
 
-                        color: white,
+                        color: white, // main color of a Card
+
                         elevation: 12,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
@@ -200,15 +204,18 @@ class _SafeState extends State<Safe> {
                                   children: <Widget>[
                                     Text(
                                       widgets[index],
-                                      style: const TextStyle(
+                                      style: GoogleFonts.raleway(
                                           fontSize: 30,
-                                          fontWeight: FontWeight.w300,
-                                          color: darkRed),
+                                          fontWeight: FontWeight.w400,
+                                          color: darkRed // Widget name's color
+                                      ),
                                     ),
                                     Text(
                                       _widgetDesc[index],
-                                      style: TextStyle(
-                                          fontSize: 16, color: dark),
+                                      style: GoogleFonts.raleway(
+                                          fontSize: 16,
+                                          color: dark // Widget Description's color
+                                      ),
                                     ),
                                   ],
                                 ),
