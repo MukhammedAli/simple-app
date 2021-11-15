@@ -15,6 +15,7 @@ class _SearchState extends State<Search> {
     return Scaffold(
       backgroundColor: dark,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),

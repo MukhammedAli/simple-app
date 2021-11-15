@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/login/login.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class LoadingPage extends StatelessWidget {
   const LoadingPage({Key? key}) : super(key: key);
@@ -19,30 +20,47 @@ class LoadingPage extends StatelessWidget {
           ),
           Center(
             // ignore: deprecated_member_use
-            child: FlatButton(
-              onPressed: () async {
-                Navigator.push(context, BouncyPageRoute(widget: LogInScreen()));
-                // Navigator.push(
-                //     context, BouncyPageRoute(widget: const ListOfWidgets()));
-              },
-              child: const Text(
-                'Simple App',
-                style: TextStyle(
-                  fontSize: 50.0,
-                  color: Colors.purple,
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.bold,
+            child: AnimatedTextKit(
+              animatedTexts: [
+                ColorizeAnimatedText(
+                  'Simple App',
+                  textStyle: TextStyle(
+                    fontSize: 50.0,
+                    color: Colors.purple,
+                    letterSpacing: 2.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  colors: [
+                    Colors.purple,
+                    Colors.blue,
+                    Colors.yellow,
+                    Colors.red,
+                    Colors.green,
+                    Colors.pink
+                  ],
                 ),
-              ),
+              ],
+              repeatForever: true,
+              onTap: () async {
+                Navigator.push(context, BouncyPageRoute(widget: LogInScreen()));
+              },
             ),
           ),
           const SizedBox(height: 5.0),
-          Text(
-            'Bunch of useful apps',
+          DefaultTextStyle(
             style: TextStyle(
-              color: Colors.grey[700],
+              color: Colors.grey[200],
               fontSize: 15.0,
               letterSpacing: 1.0,
+            ),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                RotateAnimatedText('Bunch of useful apps'),
+                RotateAnimatedText('Live easily'),
+                RotateAnimatedText('Love sincerely'),
+                RotateAnimatedText('Create your own future'),
+              ],
+              repeatForever: true,
             ),
           ),
         ],
