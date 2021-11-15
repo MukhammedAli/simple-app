@@ -1,20 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp2/colors.dart';
 
 class Settings extends StatefulWidget {
   @override
   _SettingsState createState() => _SettingsState();
 }
+
 final List locale=[
   {'name':'ENGLISH','locale': Locale('en','US')},
   {'name':'RUSSIAN','locale': Locale('ru','RU')},
-
 ];
+
 updateLanguage(Locale locale){
   Get.back();
   Get.updateLocale(locale);
 }
+
 builddialog(BuildContext context){
   showDialog(context: context, builder: (builder){
     return GestureDetector(
@@ -52,15 +55,11 @@ builddialog(BuildContext context){
 
 
 class _SettingsState extends State<Settings> {
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.purple,
         title: Text(
             'Settings'.tr,
@@ -75,6 +74,7 @@ class _SettingsState extends State<Settings> {
         elevation: 0,
       ),
       body: Container(
+        color: dark,
         child: Scrollbar(
           child: ListView(
             padding: EdgeInsets.only(left: 16, top: 25, right: 16),
@@ -184,7 +184,6 @@ class _SettingsState extends State<Settings> {
       onTap: () {
         showDialog(
             context: context,
-
             builder: (BuildContext context) {
               return AlertDialog(
                 title: Text(title),
@@ -227,9 +226,6 @@ class _SettingsState extends State<Settings> {
         ),
       ),
     );
-
-
-
   }
 }
 
@@ -238,7 +234,6 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
     onTap: () {
       showDialog(
           context: context,
-
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text('Choose a language'),
