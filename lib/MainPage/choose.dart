@@ -98,9 +98,9 @@ class _SafeState extends State<Safe> {
     '/google-maps'
   ];
 
-  final List<String> _widgetIcons = <String>[
+  List<String> _widgetIcons = <String>[
     "icons/weatherIcon.png",
-    "icons/bmiIcon.png",
+    "icons/weatherIcon/bmiIcon.png",
     "icons/playerIcon.png",
     "icons/playerIcon.png",
     "icons/noteIcon.png",
@@ -174,7 +174,10 @@ class _SafeState extends State<Safe> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              const FlutterLogo(size: 48),
+                              ImageIcon(
+                                  AssetImage(_widgetIcons[index]),
+                                  size: 60
+                              ),
                               const SizedBox(
                                 width: 16,
                               ),
@@ -198,8 +201,7 @@ class _SafeState extends State<Safe> {
                                   ],
                                 ),
                               ),
-                              ImageIcon(AssetImage(_widgetIcons[index]),
-                                  size: 60, color: Colors.black)
+
                             ],
                           ),
                         ),
