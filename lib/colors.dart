@@ -19,3 +19,10 @@ const Color dark = Color.fromRGBO(50, 46, 57, 1.0);
 abstract class AppColor {
   static Color dark = const Color.fromRGBO(50, 46, 57, 1.0);
 }
+
+const Color darkRed =  Color.fromRGBO(142, 66, 66, 1.0);
+
+const Color pale = Color.fromRGBO(155, 138, 143, 1.0);
+
+const Color brown = Color.fromRGBO(149, 107, 78, 1.0);
+
