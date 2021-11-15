@@ -40,6 +40,7 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
     });
   }
 
+
   final List<Widget> _widgetOptions = <Widget>[
     const Safe(
       myRoute: [],
@@ -87,6 +88,7 @@ class _SafeState extends State<Safe> {
     const TasksScreen(),
     MapScreen()
   ];
+
   List<String> myRoute = [
     '/weather-app',
     '/bmi-app',
@@ -95,6 +97,16 @@ class _SafeState extends State<Safe> {
     '/notification',
     '/google-maps'
   ];
+
+  final List<String> _widgetIcons = <String>[
+    "icons/weatherIcon.png",
+    "icons/bmiIcon.png",
+    "icons/playerIcon.png",
+    "icons/playerIcon.png",
+    "icons/noteIcon.png",
+    "icons/mapIcon.png"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,7 +198,7 @@ class _SafeState extends State<Safe> {
                                   ],
                                 ),
                               ),
-                              const Icon(Icons.navigate_next,
+                              ImageIcon(AssetImage(_widgetIcons[index]),
                                   size: 60, color: Colors.black)
                             ],
                           ),
