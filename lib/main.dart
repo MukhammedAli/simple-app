@@ -27,7 +27,7 @@ void main() => runApp(
         },
         theme: ThemeData(
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
-              backgroundColor: Colors.purple,
+              backgroundColor: Colors.blueAccent,
               selectedItemColor: Colors.white,
               unselectedItemColor: AppColor.dark),
         ),

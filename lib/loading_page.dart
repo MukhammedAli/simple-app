@@ -9,13 +9,13 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Icon(
             Icons.all_inclusive_rounded,
-            color: Colors.purple,
+            color: Colors.blueAccent,
             size: 50.0,
           ),
           Center(
@@ -24,15 +24,15 @@ class LoadingPage extends StatelessWidget {
               animatedTexts: [
                 ColorizeAnimatedText(
                   'Simple App',
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 50.0,
-                    color: Colors.purple,
+                    color: Colors.blueAccent,
                     letterSpacing: 2.0,
                     fontWeight: FontWeight.bold,
                   ),
                   colors: [
+                    Colors.blueAccent,
                     Colors.purple,
-                    Colors.blue,
                     Colors.yellow,
                     Colors.red,
                     Colors.green,
@@ -46,21 +46,24 @@ class LoadingPage extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 5.0),
-          DefaultTextStyle(
-            style: TextStyle(
-              color: Colors.grey[200],
-              fontSize: 15.0,
-              letterSpacing: 1.0,
-            ),
-            child: AnimatedTextKit(
-              animatedTexts: [
-                RotateAnimatedText('Bunch of useful apps'),
-                RotateAnimatedText('Live easily'),
-                RotateAnimatedText('Love sincerely'),
-                RotateAnimatedText('Create your own future'),
-              ],
-              repeatForever: true,
+          Container(
+            padding: EdgeInsets.only(top: 5.0),
+            height: 30,
+            child: DefaultTextStyle(
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 15.0,
+                letterSpacing: 1.0,
+              ),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  RotateAnimatedText('Bunch of useful apps'),
+                  RotateAnimatedText('Live easily'),
+                  RotateAnimatedText('Love sincerely'),
+                  RotateAnimatedText('Create your own future'),
+                ],
+                repeatForever: true,
+              ),
             ),
           ),
         ],

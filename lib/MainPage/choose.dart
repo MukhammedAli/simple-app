@@ -98,13 +98,13 @@ class _SafeState extends State<Safe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: dark,
+      backgroundColor: white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blueAccent,
         title: const Text(
           "Choose application",
           style: TextStyle(
@@ -148,7 +148,7 @@ class _SafeState extends State<Safe> {
                         }
                       },
                       child: Card(
-                        color: Colors.purple,
+                        color: Colors.blueAccent,
                         elevation: 12,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
