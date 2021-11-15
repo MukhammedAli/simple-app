@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp2/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -60,12 +61,12 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.purple,
+        backgroundColor: topaz,
         title: Text(
             'Settings'.tr,
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
+          style: GoogleFonts.raleway(
+            fontSize: 40,
+            fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
@@ -90,7 +91,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Account".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
                   ),
                 ],
               ),
@@ -120,7 +121,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Notifications".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
                   ),
                 ],
               ),

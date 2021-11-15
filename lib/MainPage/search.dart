@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../colors.dart';
 
 class Search extends StatefulWidget {
@@ -19,12 +19,12 @@ class _SearchState extends State<Search> {
         iconTheme: const IconThemeData(
           color: Colors.black, //change your color here
         ),
-        backgroundColor: Colors.purple,
-        title: const Text(
+        backgroundColor: topaz,
+        title: Text(
           "Search",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
+          style: GoogleFonts.raleway(
+            fontSize: 40,
+            fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
@@ -35,7 +35,11 @@ class _SearchState extends State<Search> {
       body: Center(
           child: Text(
         "Search",
-        style: TextStyle(color: Colors.white),
+        style: GoogleFonts.raleway(
+            color: darkRed,
+            fontSize: 30,
+            fontWeight: FontWeight.w300
+        ),
       )),
     );
   }
