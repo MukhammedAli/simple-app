@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myapp2/ExampleApp/controllers/counter_controller.dart';
 import 'package:myapp2/ExampleApp/ui/views/counting_column.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyExample extends StatelessWidget {
   const MyExample({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class MyExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           iconTheme: const IconThemeData(
@@ -24,8 +26,15 @@ class MyExample extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
           ),
           centerTitle: true,
-          backgroundColor: Colors.purple,
-          title: const Text('First Try'),
+          backgroundColor: Colors.lightBlue,
+          title: Text(
+              'First Try',
+              style: GoogleFonts.raleway(
+                fontSize: 40,
+                fontWeight: FontWeight.w600
+              )
+          ),
+          toolbarHeight: 70,
         ),
         body: GetBuilder<CounterController>(
           init: CounterController(),

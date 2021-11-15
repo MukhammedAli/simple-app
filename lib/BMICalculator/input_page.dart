@@ -8,6 +8,7 @@ import 'results_page.dart';
 import 'bottom_button.dart';
 import 'round_icon_button.dart';
 import 'calculator_brain.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 enum Gender {
   male,
@@ -32,13 +33,60 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 40,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         iconTheme: const IconThemeData(
           color: Colors.white, //change your color here
         ),
-        title: const Text('BMI Calculator'),
+        title: Text(
+            'BMI Calculator',
+            style: GoogleFonts.raleway(
+              fontSize: 40,
+              fontWeight: FontWeight.w600
+            ),
+        ),
         centerTitle: true,
         backgroundColor: const Color(0xFF0A0E21),
         automaticallyImplyLeading: true,
+        toolbarHeight: 70,
+      ),
+      bottomNavigationBar: Material(
+        color: Colors.pink,
+        child: InkWell(
+          onTap: () {
+            CalculatorBrain calc =
+            CalculatorBrain(height: height, weight: weight);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                    )
+                )
+            );
+          },
+          child: SizedBox(
+            height: 80,
+            child: Center(
+              child: Text(
+                'CALCULATE',
+                style: GoogleFonts.raleway(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 33,
+                  color: Colors.white
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -209,20 +257,6 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
           ])),
-          BottomButton(
-              buttonTitle: 'CALCULATE',
-              onTap: () {
-                CalculatorBrain calc =
-                    CalculatorBrain(height: height, weight: weight);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ResultsPage(
-                              bmiResult: calc.calculateBMI(),
-                              resultText: calc.getResult(),
-                              interpretation: calc.getInterpretation(),
-                            )));
-              }),
         ],
       ),
     );

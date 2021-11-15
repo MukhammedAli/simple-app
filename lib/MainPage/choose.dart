@@ -159,7 +159,7 @@ class _SafeState extends State<Safe> {
                             url: "Asia/Almaty");
                         instance.getTime();
                         if (index == 0) {
-                          Navigator.pushNamed(context, '/weather-app',
+                          Navigator.pushNamed(context, '/time-app',
                               arguments: {
                                 'location': instance.location,
                                 'flag': instance.flag,

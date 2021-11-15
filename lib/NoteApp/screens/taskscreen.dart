@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/NoteApp/widgets/task_list.dart';
 import 'package:myapp2/NoteApp/screens/add_tasks.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
@@ -20,9 +21,13 @@ class TasksScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
         centerTitle: true,
-        title: const Text(
-          'My notes',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          'My Notes',
+          style: GoogleFonts.raleway(
+              color: Colors.white,
+              fontSize: 40,
+              fontWeight: FontWeight.w600
+          ),
         ),
         leading: IconButton(
           icon: const Icon(
@@ -33,6 +38,7 @@ class TasksScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
+        toolbarHeight: 70,
       ),
       backgroundColor: Colors.lightBlueAccent,
       body: Column(

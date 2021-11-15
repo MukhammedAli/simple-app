@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/services/world_time.dart';
+import '/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({Key? key}) : super(key: key);
@@ -55,30 +57,50 @@ class _ChooseLocationState extends State<ChooseLocation> {
         iconTheme: const IconThemeData(
           color: Colors.white, //change your color here
         ),
-        backgroundColor: Colors.blue[600],
-        title: const Text(
-          "Choose a location",
-          style: TextStyle(
+        backgroundColor: Colors.lightBlue,
+        title: Text(
+          "Choose location",
+          style: GoogleFonts.raleway(
             color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.w600
           ),
         ),
         centerTitle: true,
+        toolbarHeight: 70,
         elevation: 0,
       ),
       body: ListView.builder(
         itemCount: locations.length,
+        itemExtent: 100,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
             child: Card(
+              elevation: 12,
               child: ListTile(
                 onTap: () {
                   updateTime(index);
                 },
-                title: Text(locations[index].location),
+                contentPadding: const EdgeInsets.symmetric(vertical: 11.5, horizontal: 10.0),
+                title: Text(
+                    locations[index].location,
+                    style: GoogleFonts.barlow(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 30,
+                      color: dark
+                    )
+                ),
                 leading: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/${locations[index].flag}'),
+                  radius: 30,
+                  backgroundColor: dark,
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundImage:
+                    AssetImage(
+                      'assets/${locations[index].flag}',
+                    ),
+                  )
                 ),
               ),
             ),

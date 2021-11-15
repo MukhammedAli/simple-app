@@ -17,8 +17,8 @@ void main() => runApp(
         routes: {
           '/first': (context) => const LoadingPage(),
           '/second': (context) => const ListOfWidgets(),
-          '/weather-app': (context) => const Home(),
-          '/weather-app-location': (context) => const ChooseLocation(),
+          '/time-app': (context) => const Home(),
+          '/time-app-location': (context) => const ChooseLocation(),
           '/bmi-app': (context) => const InputPage(),
           '/music_player': (context) => const MusicApp(),
           '/google-maps': (context) => MapScreen(),

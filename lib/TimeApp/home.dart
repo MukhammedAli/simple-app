@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/TimeApp/choose_loc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '/colors.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -36,12 +38,12 @@ class _HomeState extends State<Home> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        backgroundColor: Colors.blue[600],
-        title: const Text(
-          "Time application",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w300,
+        backgroundColor: Colors.lightBlue,
+        title: Text(
+          "Time App",
+          style: GoogleFonts.raleway(
+            fontSize: 40,
+            fontWeight: FontWeight.w600,
             color: Colors.white,
           ),
         ),
@@ -58,7 +60,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 80.0, 0, 0),
             child: Column(
               children: <Widget>[
                 FlatButton.icon(
@@ -76,23 +78,28 @@ class _HomeState extends State<Home> {
                   },
                   icon: Icon(
                     Icons.edit_location,
+                    size: 40,
                     color: Colors.grey[300],
                   ),
                   label: Text(
-                    "Edit location",
-                    style: TextStyle(color: Colors.grey[300]),
+                    "Change location",
+                    style: TextStyle(
+                        color: Colors.grey[300],
+                        fontSize: 30
+                    ),
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 60.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       data['location'],
-                      style: const TextStyle(
-                        fontSize: 28.0,
+                      style: GoogleFonts.barlow(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.w400,
                         letterSpacing: 2.0,
-                        color: Colors.white,
+                        color: yellow,
                       ),
                     ),
                   ],
