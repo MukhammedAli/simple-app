@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
           onPressed: () => Navigator.of(context).pop(),
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
           style: TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w300,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         toolbarHeight: 70,

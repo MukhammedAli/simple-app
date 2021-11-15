@@ -47,19 +47,19 @@ class _ChooseLocationState extends State<ChooseLocation> {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
+          color: Colors.white, //change your color here
         ),
         backgroundColor: Colors.blue[600],
         title: const Text(
           "Choose a location",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,

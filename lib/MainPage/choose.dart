@@ -102,9 +102,18 @@ class _SafeState extends State<Safe> {
     'assets/icons/weatherIcon.png',
     'assets/icons/bmiIcon.png',
     'assets/icons/playerIcon.png',
-    'assets/icons/playerIcon.png',
+    'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png'
+  ];
+
+  final List<String> _widgetDesc = <String>[
+    "Shows weather conditions in your current location.",
+    "Body Mass Index calculator.",
+    "Listen to your favourite music.",
+    "Example application for testing flutter.",
+    "If you forgot, then it wasn't important.",
+    "Find your place in the world."
   ];
 
   @override
@@ -160,12 +169,14 @@ class _SafeState extends State<Safe> {
                         }
                       },
                       child: Card(
+
                         color: Colors.blueAccent,
                         elevation: 12,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Container(
+                          height: 120,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24.0, vertical: 20.0),
                           decoration: BoxDecoration(
@@ -176,8 +187,8 @@ class _SafeState extends State<Safe> {
                             children: <Widget>[
                               Image(
                                 image: AssetImage(_widgetIcon[index]),
-                                width: 60,
-                                height: 60,
+                                width: 70,
+                                height: 70,
                               ),
                               const SizedBox(
                                 width: 22,
@@ -194,8 +205,8 @@ class _SafeState extends State<Safe> {
                                           fontWeight: FontWeight.w300,
                                           color: Colors.black),
                                     ),
-                                    const Text(
-                                      'Some description',
+                                    Text(
+                                      _widgetDesc[index],
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.black),
                                     ),

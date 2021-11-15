@@ -27,7 +27,7 @@ class TasksScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
           onPressed: () => Navigator.pop(context),
