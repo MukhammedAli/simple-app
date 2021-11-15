@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/MainPage/choose.dart';
+import 'package:myapp2/NewLogin/Login/login_screen.dart';
 import 'constantslog.dart';
 import 'background.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,10 +30,9 @@ class RoundedButton extends StatelessWidget {
         child: FlatButton(
             color: color,
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            onPressed: () => {
-                  Navigator.push(
-                      context, BouncyPageRoute(widget: ListOfWidgets()))
-                },
+            onPressed: () {
+              Navigator.push(context, BouncyPageRoute(widget: LoginScreen()));
+            },
             child: Text(text!, style: TextStyle(color: Colors.white))),
       ),
     );

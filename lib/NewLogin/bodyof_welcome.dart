@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/NewLogin/rounded_button.dart';
+import 'Login/login_screen.dart';
 import 'constantslog.dart';
 import 'background.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,8 +31,7 @@ class Body extends StatelessWidget {
           RoundedButton(
               text: "LOG IN",
               press: () {
-                Navigator.push(
-                    context, BouncyPageRoute(widget: const ListOfWidgets()));
+                Navigator.push(context, BouncyPageRoute(widget: LoginScreen()));
               },
               color: Colors.blueAccent),
           RoundedButton(
