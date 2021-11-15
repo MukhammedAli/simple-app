@@ -8,15 +8,15 @@ import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/NoteApp/screens/taskscreen.dart';
 import 'package:myapp2/MainPage/search.dart';
 import 'package:myapp2/MainPage/settings.dart';
-import 'package:myapp2/Weather/choose_loc.dart';
-import 'package:myapp2/Weather/home.dart';
+import 'package:myapp2/TimeApp/choose_loc.dart';
+import 'package:myapp2/TimeApp/home.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final widgets = [
-  'Weather app',
+  'Time app',
   'BMI Calculator',
   'Music Player',
   'Example page',
@@ -91,7 +91,7 @@ class _SafeState extends State<Safe> {
   ];
 
   List<String> myRoute = [
-    '/weather-app',
+    '/time-app',
     '/bmi-app',
     '/music_player',
     '/test_page',
@@ -100,7 +100,7 @@ class _SafeState extends State<Safe> {
   ];
 
   final List<String> _widgetIcon = <String>[
-    'assets/icons/weatherIcon.png',
+    'assets/icons/timeIcon.png',
     'assets/icons/bmiIcon.png',
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
@@ -109,7 +109,7 @@ class _SafeState extends State<Safe> {
   ];
 
   final List<String> _widgetDesc = <String>[
-    "Shows weather conditions in your current location.",
+    "Shows current time in selected location.",
     "Body Mass Index calculator.",
     "Listen to your favourite music.",
     "Example application for testing flutter.",

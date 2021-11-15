@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
-import 'package:myapp2/Weather/choose_loc.dart';
+import 'package:myapp2/TimeApp/choose_loc.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
