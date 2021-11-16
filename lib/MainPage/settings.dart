@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp2/NewLogin/welcome_page.dart';
 import 'package:myapp2/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp2/login/login.dart';
+
+import 'editProfile.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -19,40 +23,9 @@ updateLanguage(Locale locale){
   Get.updateLocale(locale);
 }
 
-builddialog(BuildContext context){
-  showDialog(context: context, builder: (builder){
-    return GestureDetector(
-      onTap: (){
-        AlertDialog(
-          title: Text('Choose a language'),
-          content: Container(
-            width: double.maxFinite,
-            child: ListView.separated(
-                shrinkWrap: true,
-                itemBuilder: (context,index){
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                        onTap: (){
-                          updateLanguage(locale[index]['locale']);
-                        },
-                        child: Text(locale[index]['name'])),
-                  );
-                },
-                separatorBuilder: (context,index){
-                  return Divider(
-                    color: Colors.blue,
-                  );
-                },
-                itemCount: locale.length),
-          ),
-        );
-      },
 
-    );
-  });
 
-}
+
 
 
 class _SettingsState extends State<Settings> {
@@ -102,7 +75,7 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildAccountOptionRow(context, "Change password".tr),
+              buildEditProfile(context, "Edit Profile".tr),
               buildAccountOptionRow(context, "Content settings".tr),
               buildAccountOptionRow(context, "Background".tr),
               buildLanguageOptionRow(context, "Language".tr),
@@ -139,13 +112,17 @@ class _SettingsState extends State<Settings> {
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                   child: OutlinedButton(
+
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(width: 1.0, color: Colors.white)
                     ),
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
                     //     borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => WelcomeScreen()));
+                    },
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
                             fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
@@ -261,6 +238,35 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
               ),
             );
           });
+    },
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[300],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+GestureDetector buildEditProfile(BuildContext context, String title) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => EditProfilePage()));
+
     },
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
