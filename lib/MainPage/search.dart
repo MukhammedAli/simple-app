@@ -82,6 +82,8 @@ class WidgetSearch extends SearchDelegate<String> {
     'Maps',
   ];
 
+
+ // TODO add working recent widgets
   final recentWidgets = [
     'Time',
     'Body Mass Index',

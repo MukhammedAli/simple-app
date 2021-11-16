@@ -14,6 +14,8 @@ class ResultsPage extends StatelessWidget {
   final String resultText;
   final String interpretation;
 
+  //TODO change result's color according to BMI (18-20 / 24-26 - yellow, 0-17 / 27-... - red)
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
