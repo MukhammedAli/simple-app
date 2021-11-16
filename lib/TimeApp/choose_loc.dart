@@ -12,15 +12,15 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
   List<WorldTime> locations = [
-    WorldTime(url: 'Asia/Almaty', location: 'Almaty', flag: 'kz.png'),
-    WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.png'),
-    WorldTime(url: 'Europe/Berlin', location: 'Athens', flag: 'greece.png'),
-    WorldTime(url: 'Africa/Cairo', location: 'Cairo', flag: 'egypt.png'),
-    WorldTime(url: 'Africa/Nairobi', location: 'Nairobi', flag: 'kenya.png'),
-    WorldTime(url: 'America/Chicago', location: 'Chicago', flag: 'usa.png'),
-    WorldTime(url: 'America/New_York', location: 'New York', flag: 'usa.png'),
-    WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
-    WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.png'),
+    WorldTime(url: 'Asia/Almaty', location: 'Almaty', flag: 'flags/kz.png'),
+    WorldTime(url: 'Europe/London', location: 'London', flag: 'flags/uk.png'),
+    WorldTime(url: 'Europe/Berlin', location: 'Athens', flag: 'flags/greece.png'),
+    WorldTime(url: 'Africa/Cairo', location: 'Cairo', flag: 'flags/egypt.png'),
+    WorldTime(url: 'Africa/Nairobi', location: 'Nairobi', flag: 'flags/kenya.png'),
+    WorldTime(url: 'America/Chicago', location: 'Chicago', flag: 'flags/usa.png'),
+    WorldTime(url: 'America/New_York', location: 'New York', flag: 'flags/usa.png'),
+    WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'flags/south_korea.png'),
+    WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'flags/indonesia.png'),
   ];
 
   @override
@@ -58,14 +58,17 @@ class _ChooseLocationState extends State<ChooseLocation> {
           color: Colors.white, //change your color here
         ),
         backgroundColor: Colors.lightBlue,
-        title: Text(
-          "Choose location",
-          style: GoogleFonts.raleway(
-            color: Colors.white,
-            fontSize: 40,
-            fontWeight: FontWeight.w600
+        title: FittedBox(
+               fit: BoxFit.fitWidth,
+               child: Text(
+                  "Choose location",
+                  style: GoogleFonts.raleway(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w600
+              ),
+            ),
           ),
-        ),
         centerTitle: true,
         toolbarHeight: 70,
         elevation: 0,
