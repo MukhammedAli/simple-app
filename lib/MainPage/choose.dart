@@ -16,12 +16,12 @@ import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final widgets = [
-  'Time app',
+  'Time App',
   'BMI Calculator',
   'Music Player',
-  'Example page',
+  'Example',
   'Note',
-  'Google Maps'
+  'Map'
 ];
 
 class ListOfWidgets extends StatefulWidget {
@@ -152,13 +152,14 @@ class _SafeState extends State<Safe> {
                 child: Stack(
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         instance = WorldTime(
-                            location: 'Welcome page',
+                            location: 'Almaty',
                             flag: 'kazakstan.png',
                             url: "Asia/Almaty");
                         instance.getTime();
                         if (index == 0) {
+                          await instance.getTime();
                           Navigator.pushNamed(context, '/time-app',
                               arguments: {
                                 'location': instance.location,
@@ -210,11 +211,14 @@ class _SafeState extends State<Safe> {
                                           color: darkRed // Widget name's color
                                       ),
                                     ),
-                                    Text(
-                                      _widgetDesc[index],
-                                      style: GoogleFonts.raleway(
+                                  FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                    child: Text(
+                                        _widgetDesc[index],
+                                        style: GoogleFonts.raleway(
                                           fontSize: 16,
                                           color: dark // Widget Description's color
+                                        ),
                                       ),
                                     ),
                                   ],

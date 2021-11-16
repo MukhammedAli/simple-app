@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
               SizedBox(
                 height: 10,
               ),
-              buildLanguageOptionRow(context, "Change password".tr),
+              buildAccountOptionRow(context, "Change password".tr),
               buildAccountOptionRow(context, "Content settings".tr),
               buildAccountOptionRow(context, "Background".tr),
               buildLanguageOptionRow(context, "Language".tr),

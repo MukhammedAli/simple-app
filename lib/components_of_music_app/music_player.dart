@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp2/components_of_music_app/custom_list_tile.dart';
 import 'package:myapp2/components_of_music_app/stream.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MusicApp extends StatefulWidget {
   const MusicApp({Key? key}) : super(key: key);
@@ -143,9 +144,13 @@ class _MusicAppState extends State<MusicApp> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'My Playlist',
-          style: TextStyle(color: Colors.black),
+          style: GoogleFonts.raleway(
+              color: Colors.black,
+              fontSize: 40,
+              fontWeight: FontWeight.w600,
+          ),
         ),
         leading: IconButton(
           icon: const Icon(
@@ -155,7 +160,8 @@ class _MusicAppState extends State<MusicApp> {
           ),
           onPressed: () => Navigator.of(context).pop(audioPlayer.pause()),
         ),
-        elevation: 0,
+        elevation: 5,
+        toolbarHeight: 70,
       ),
       body: Column(
         children: [

@@ -54,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
         centerTitle: true,
         title: Text(
-            'Google Maps',
+            'Map',
             style: GoogleFonts.raleway(
               fontWeight: FontWeight.w600,
               fontSize: 40,

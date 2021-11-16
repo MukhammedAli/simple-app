@@ -31,7 +31,7 @@ class ResultsPage extends StatelessWidget {
         color: Colors.white, //change your color here
       ),
       title: Text(
-        'BMI Calculator',
+        'BMI',
         style: GoogleFonts.raleway(
         fontSize: 40,
         fontWeight: FontWeight.w600
