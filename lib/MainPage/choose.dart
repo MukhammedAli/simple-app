@@ -203,7 +203,9 @@ class _SafeState extends State<Safe> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
-                                    Text(
+                                FittedBox(
+                                fit: BoxFit.fitWidth,
+                                  child: Text(
                                       widgets[index],
                                       style: GoogleFonts.raleway(
                                           fontSize: 30,
@@ -211,6 +213,7 @@ class _SafeState extends State<Safe> {
                                           color: darkRed // Widget name's color
                                       ),
                                     ),
+                                  ),
                                   FittedBox(
                                   fit: BoxFit.fitWidth,
                                     child: Text(
