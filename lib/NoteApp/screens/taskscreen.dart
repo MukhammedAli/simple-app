@@ -7,7 +7,7 @@ class TasksScreen extends StatelessWidget {
   const TasksScreen({Key? key}) : super(key: key);
 
   Widget buildButtomSheet(BuildContext context) => AddTasksScreen();
-  //TODO implement adding new notes
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

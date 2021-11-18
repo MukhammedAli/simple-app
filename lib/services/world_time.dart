@@ -20,17 +20,15 @@ class WorldTime {
 
       //get property from data
       String datetime = data["datetime"];
-      String offset = data["utc_offset"].substring(0, 3);
+      String offset = data["utc_offset"].substring(1, 3);
+      //print(datetime);
+      //print(offset);
 
       //create date time object
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
-
-      //formating time to a HH:mm AM/PM format
-      DateFormat format = DateFormat('HH:mm a');
-      time = format.format(now);
-
       isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
+      time = DateFormat.jm().format(now);
     } catch (e) {
       time = 'could not get time data';
     }
