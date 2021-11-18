@@ -1,14 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp2/BMICalculator/bmimainpage.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
+import 'package:myapp2/Weather_app/weather_runner.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/NoteApp/screens/taskscreen.dart';
 import 'package:myapp2/MainPage/search.dart';
 import 'package:myapp2/MainPage/settings.dart';
-import 'package:myapp2/TimeApp/choose_loc.dart';
 import 'package:myapp2/TimeApp/home.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
@@ -21,7 +20,8 @@ final widgets = [
   'Music Player',
   'Example',
   'Note',
-  'Map'
+  'Map',
+  'Weather App',
 ];
 
 class ListOfWidgets extends StatefulWidget {
@@ -40,7 +40,6 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
       _selectedTab = index;
     });
   }
-
 
   final List<Widget> _widgetOptions = <Widget>[
     const Safe(
@@ -87,7 +86,8 @@ class _SafeState extends State<Safe> {
     const MusicApp(),
     const MyExample(),
     const TasksScreen(),
-    MapScreen()
+    MapScreen(),
+    Weather(),
   ];
 
   List<String> myRoute = [
@@ -96,7 +96,8 @@ class _SafeState extends State<Safe> {
     '/music_player',
     '/test_page',
     '/notification',
-    '/google-maps'
+    '/google-maps',
+    '/weather'
   ];
 
   final List<String> _widgetIcon = <String>[
@@ -105,7 +106,8 @@ class _SafeState extends State<Safe> {
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
-    'assets/icons/mapIcon.png'
+    'assets/icons/mapIcon.png',
+    'assets/icons/mapIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
@@ -114,13 +116,13 @@ class _SafeState extends State<Safe> {
     "Listen to your favourite music.",
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
-    "Find your place in the world."
+    "Find your place in the world.",
+    "Shows current weather in selected location."
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: dark, // background color of a page
 
       appBar: AppBar(
@@ -131,10 +133,11 @@ class _SafeState extends State<Safe> {
         backgroundColor: topaz, // color of an AppBarr
         title: Text(
           "Choose",
-          style: GoogleFonts.raleway(  // font of a main text of AppBar
+          style: GoogleFonts.raleway(
+            // font of a main text of AppBar
             fontSize: 40,
             fontWeight: FontWeight.w600,
-            color: white,  // color of a text
+            color: white, // color of a text
           ),
         ),
         toolbarHeight: 70,
@@ -160,20 +163,18 @@ class _SafeState extends State<Safe> {
                         instance.getTime();
                         if (index == 0) {
                           await instance.getTime();
-                          Navigator.pushNamed(context, '/time-app',
-                              arguments: {
-                                'location': instance.location,
-                                'flag': instance.flag,
-                                'time': instance.time,
-                                'isDayTime': instance.isDayTime,
-                              });
+                          Navigator.pushNamed(context, '/time-app', arguments: {
+                            'location': instance.location,
+                            'flag': instance.flag,
+                            'time': instance.time,
+                            'isDayTime': instance.isDayTime,
+                          });
                         } else {
                           Navigator.push(context,
                               BouncyPageRoute(widget: myWidget![index]));
                         }
                       },
                       child: Card(
-
                         color: white, // main color of a Card
 
                         elevation: 12,
@@ -203,31 +204,28 @@ class _SafeState extends State<Safe> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
-                                FittedBox(
-                                fit: BoxFit.fitWidth,
-                                  child: Text(
+                                    Text(
                                       widgets[index],
                                       style: GoogleFonts.raleway(
                                           fontSize: 30,
                                           fontWeight: FontWeight.w400,
                                           color: darkRed // Widget name's color
-                                      ),
+                                          ),
                                     ),
-                                  ),
-                                  FittedBox(
-                                  fit: BoxFit.fitWidth,
-                                    child: Text(
+                                    FittedBox(
+                                      fit: BoxFit.fitWidth,
+                                      child: Text(
                                         _widgetDesc[index],
                                         style: GoogleFonts.raleway(
-                                          fontSize: 16,
-                                          color: dark // Widget Description's color
-                                        ),
+                                            fontSize: 16,
+                                            color:
+                                                dark // Widget Description's color
+                                            ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-
                             ],
                           ),
                         ),

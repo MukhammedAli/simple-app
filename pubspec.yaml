@@ -47,6 +47,7 @@ dependencies:
   email_validator: ^2.0.1
   animated_text_kit: ^4.2.1
   image_picker: ^0.8.4+4
+  geolocator: ^7.7.1
 
 dev_dependencies:
   flutter_test:

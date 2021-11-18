@@ -14,59 +14,66 @@ class BodyWidget extends StatelessWidget {
   BodyWidget({
     Key? key,
   }) : super(key: key);
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Form(
-        key: _formKey,
+        key: formKey,
         child: BackgroundWidget(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text("LOG IN",
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold)),
-              const SizedBox(
-                height: 10,
-              ),
-              SvgPicture.asset(
-                "assets/icons/svgfornewlog.svg",
-                height: size.height * 0.35,
-              ),
-              RoundedInputField(
-                hintText: "Your email",
-                onChanged: (value) {
-                  _email = value;
-                },
-              ),
-              RoundedPasswordField(
-                onChanged: (value) {
-                  _password = value;
-                },
-              ),
-              const RoundedButton(
-                text: "LOGIN",
-                color: Colors.blueAccent,
-              ),
-              Center(
-                child: Row(
+          child: ListView(
+            children: [
+              Form(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("Don't have an Accounnt?",
+                  children: <Widget>[
+                    const Text("LOG IN",
                         style: TextStyle(
+                            fontSize: 15,
                             color: Colors.black54,
                             fontWeight: FontWeight.bold)),
-                    Text("Sign in",
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold)),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SvgPicture.asset(
+                      "assets/icons/svgfornewlog.svg",
+                      height: size.height * 0.35,
+                    ),
+                    RoundedInputField(
+                      hintText: "Your email",
+                      onChanged: (value) {
+                        _email = value;
+                      },
+                    ),
+                    RoundedPasswordField(
+                      onChanged: (value) {
+                        _password = value;
+                      },
+                    ),
+                    const RoundedButton(
+                      text: "LOGIN",
+                      color: Colors.blueAccent,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text("Don't have an Accounnt?",
+                              style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold)),
+                          Text("Sign in",
+                              style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -101,7 +108,7 @@ class RoundedButton extends StatelessWidget {
             color: color,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
             onPressed: () {
-              // ignore: unnecessary_null_comparison, non_constant_identifier_names
+              // ignore: non_constant_identifier_names
               RegExp regex_pass =
                   RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
               // should contain at least one upper case
