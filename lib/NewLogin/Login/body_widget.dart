@@ -108,10 +108,32 @@ class RoundedButton extends StatelessWidget {
             color: color,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
             onPressed: () {
-              // ignore: non_constant_identifier_names
-
               Navigator.push(
                   context, BouncyPageRoute(widget: const ListOfWidgets()));
+              // ignore: non_constant_identifier_names
+              // RegExp regex_pass =
+              //     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+              // // should contain at least one upper case
+              // // should contain at least one lower case
+              // // should contain at least one digit
+
+              // // ignore: non_constant_identifier_names
+              // RegExp regex_email = RegExp(
+              //     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+              // // ignore: unnecessary_null_comparison
+              // if ((_email == null || _email.isEmpty) ||
+              //     // ignore: unnecessary_null_comparison
+              //     (_password == null || _password.isEmpty)) {
+              //   // ignore: avoid_print
+              //   print('Some text fields are empty');
+              // } else {
+              //   if (!regex_pass.hasMatch(_password) ||
+              //       !regex_email.hasMatch(_email)) {
+              //     // ignore: avoid_print
+              //     print('Enter valid email or password');
+              //   } else {
+              //   }
+              // }
             },
             child: Text(text!, style: const TextStyle(color: Colors.white))),
       ),
