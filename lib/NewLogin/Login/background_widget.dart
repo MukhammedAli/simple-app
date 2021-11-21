@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 class BackgroundWidget extends StatelessWidget {
   final Widget child;
-  const BackgroundWidget({
+  var firstImage = "";
+  var secondImage = "";
+  BackgroundWidget({
     Key? key,
     required this.child,
+    required this.firstImage,
+    required this.secondImage,
   }) : super(key: key);
 
   @override
@@ -16,12 +20,8 @@ class BackgroundWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Positioned(
-              left: 0, top: 0, child: Image.asset("assets/images/ending.png")),
-          Positioned(
-              left: 0,
-              bottom: 0,
-              child: Image.asset("assets/images/ellipseforlog2.png")),
+          Positioned(left: 0, top: 0, child: Image.asset(firstImage)),
+          Positioned(left: 0, bottom: 0, child: Image.asset(secondImage)),
           child,
         ],
       ),

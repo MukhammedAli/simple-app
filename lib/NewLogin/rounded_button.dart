@@ -15,6 +15,10 @@ class RoundedButton extends StatelessWidget {
     this.textColor = Colors.white,
   }) : super(key: key);
 
+  Function newFunc() {
+    return press!();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,9 +31,7 @@ class RoundedButton extends StatelessWidget {
         child: FlatButton(
             color: color,
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            onPressed: () {
-              Navigator.push(context, BouncyPageRoute(widget: LoginScreen()));
-            },
+            onPressed: () => newFunc(),
             child: Text(text!, style: const TextStyle(color: Colors.white))),
       ),
     );
