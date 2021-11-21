@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
+import 'package:myapp2/NewLogin/Login/registration_screen.dart';
 import 'package:myapp2/NewLogin/rounded_button.dart';
 import 'Login/login_screen.dart';
 import 'background.dart';
@@ -28,12 +29,14 @@ class Body extends StatelessWidget {
           SizedBox(height: size.height * 0.05),
           RoundedButton(
               text: "LOG IN",
-              press: () {
-                Navigator.push(context, BouncyPageRoute(widget: LoginScreen()));
-              },
+              press: () => Navigator.push(
+                  context, BouncyPageRoute(widget: LoginScreen())),
               color: Colors.blueAccent),
           RoundedButton(
-              text: "REGISTER", press: () {}, color: Colors.blueAccent[100]),
+              text: "REGISTER",
+              press: () => Navigator.push(
+                  context, BouncyPageRoute(widget: RegistrationScreen())),
+              color: Colors.blueAccent[100]),
           // RoundedButton(
           //   text: "LOGIN",
           //   press: () {},
