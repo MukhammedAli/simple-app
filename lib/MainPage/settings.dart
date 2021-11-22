@@ -25,10 +25,12 @@ updateLanguage(Locale locale){
 
 
 
-
-
+class cllii{
+  static bool click = true;
+}
 
 class _SettingsState extends State<Settings> {
+  String backString = "Dark";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +50,7 @@ class _SettingsState extends State<Settings> {
         elevation: 0,
       ),
       body: Container(
-        color: dark,
+        color: (cllii.click==false)? Colors.white: dark,
         child: Scrollbar(
           child: ListView(
             padding: EdgeInsets.only(left: 16, top: 25, right: 16),
@@ -64,7 +66,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Account".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: (cllii.click==false)? Colors.black: Colors.yellow),
                   ),
                 ],
               ),
@@ -77,7 +79,7 @@ class _SettingsState extends State<Settings> {
               ),
               buildEditProfile(context, "Edit Profile".tr),
               buildAccountOptionRow(context, "Content settings".tr),
-              buildAccountOptionRow(context, "Background".tr),
+              backgroundRow(context, "Background".tr),
               buildLanguageOptionRow(context, "Language".tr),
               buildAccountOptionRow(context, "Privacy".tr),
               SizedBox(
@@ -94,7 +96,7 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Notifications".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color:(cllii.click==false)? Colors.black: Colors.yellow),
                   ),
                 ],
               ),
@@ -114,7 +116,7 @@ class _SettingsState extends State<Settings> {
                   child: OutlinedButton(
 
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(width: 1.0, color: Colors.white)
+                      side: BorderSide(width: 1.0, color: (cllii.click==false)? Colors.black: Colors.white)
                     ),
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
@@ -125,7 +127,7 @@ class _SettingsState extends State<Settings> {
                     },
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
-                            fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
+                            fontSize: 16, letterSpacing: 2.2, color: (cllii.click==false)? Colors.black: Colors.white)),
                   ),
                 ),
               ),
@@ -145,7 +147,7 @@ class _SettingsState extends State<Settings> {
           style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300]),
+              color: (cllii.click==false)? Colors.black: Colors.grey[300]),
         ),
         Transform.scale(
             scale: 0.7,
@@ -168,7 +170,7 @@ class _SettingsState extends State<Settings> {
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("Option 1"),
+                    Text("Option 1",),
                     Text("Option 2"),
                     Text("Option 3"),
                   ],
@@ -193,7 +195,64 @@ class _SettingsState extends State<Settings> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey[300],
+                color: (cllii.click==false)? Colors.black: Colors.grey[300],
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  GestureDetector backgroundRow(BuildContext context, String title) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                backgroundColor: (cllii.click==false)? Colors.white: dark,
+                title: Text(title,style: TextStyle(color: (cllii.click==false)? Colors.black: Colors.white,),),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OutlineButton(
+
+                      child: Text((cllii.click==false)? backString = "Dark": backString = "White",style: TextStyle(fontSize: 20,
+                      color: (cllii.click==false)? Colors.black: Colors.white,
+                      )),
+                      onPressed: (){
+                        setState(() {
+                          cllii.click = !cllii.click;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                actions: [
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("Close".tr,style: TextStyle(color: (cllii.click==false)? Colors.black: Colors.white,),),),
+                ],
+              );
+            });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: (cllii.click==false)? Colors.black: Colors.grey[300],
               ),
             ),
             Icon(
@@ -206,6 +265,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 }
+
 
 GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
   return GestureDetector(
@@ -249,7 +309,7 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300],
+              color:  (cllii.click==false)? Colors.black: Colors.grey[300],
             ),
           ),
           Icon(
@@ -261,6 +321,8 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
     ),
   );
 }
+
+
 GestureDetector buildEditProfile(BuildContext context, String title) {
   return GestureDetector(
     onTap: () {
@@ -278,7 +340,7 @@ GestureDetector buildEditProfile(BuildContext context, String title) {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300],
+              color: (cllii.click==false)? Colors.black: Colors.grey[300],
             ),
           ),
           Icon(

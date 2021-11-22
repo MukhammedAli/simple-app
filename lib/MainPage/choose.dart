@@ -121,7 +121,7 @@ class _SafeState extends State<Safe> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      backgroundColor: dark, // background color of a page
+      backgroundColor: (cllii.click==false)? Colors.white: dark, // background color of a page
 
       appBar: AppBar(
         automaticallyImplyLeading: false,
