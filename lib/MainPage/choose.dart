@@ -124,13 +124,7 @@ class _SafeState extends State<Safe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-
-      backgroundColor: (cllii.click==false)? Colors.white: dark, // background color of a page
-=======
-      backgroundColor: dark, // background color of a page
->>>>>>> 0026b7c2badacef3632748303faece347325571d
-
+      backgroundColor: (cllii.click==false)? Colors.white: dark, // background color of a page// background color of a page
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
