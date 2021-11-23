@@ -92,7 +92,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Full Name", "simple app", false),
+              buildTextField("Ful Name", "simple app", false),
               buildTextField("E-mail", "simple@gmail.com", false),
               buildTextField("Password", "********", true),
               buildTextField("Location", "SDU, Kaskelen", false),
