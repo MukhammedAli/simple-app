@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:myapp2/NewLogin/Login/background_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,86 +11,66 @@ import 'rounded_password.dart';
 
 String _email = "";
 String _password = "";
-String firstAsset = "";
-String secondAsset = "";
 
-class BodyWidget extends StatefulWidget {
+class BodyWidgetRegistration extends StatefulWidget {
+  const BodyWidgetRegistration({Key? key}) : super(key: key);
+
   @override
-  BodyWidgetState createState() => BodyWidgetState();
+  _BodyWidgetRegistrationState createState() => _BodyWidgetRegistrationState();
 }
 
-class BodyWidgetState extends State<BodyWidget> {
-  // BodyWidgetState({
-  //   Key? key,
-  // }) : super(key: key);
-  final formKey = GlobalKey<FormState>();
-
+class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    firstAsset = "assets/images/ending.png";
-    secondAsset = "assets/images/ellipseforlog2.png";
     return Scaffold(
-      body: Form(
-        key: formKey,
-        child: BackgroundWidget(
-          child: ListView(
-            padding: EdgeInsets.only(top: 110),
-            children: [
-              Form(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text("LOG IN",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold)),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SvgPicture.asset(
-                      "assets/icons/svgfornewlog.svg",
-                      height: size.height * 0.35,
-                    ),
-                    RoundedInputField(
-                      hintText: "Your email",
-                      onChanged: (value) {
-                        _email = value;
-                      },
-                    ),
-                    RoundedPasswordField(
-                      onChanged: (value) {
-                        _password = value;
-                      },
-                    ),
-                    const RoundedButton(
-                      text: "LOGIN",
-                      color: Colors.blueAccent,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("Don't have an Accounnt?",
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold)),
-                          Text("Sign in",
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+      body: BackgroundWidget(
+        child: ListView(
+          padding: EdgeInsets.only(top: 110),
+          children: [
+            Form(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text("REGISTER",
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold)),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SvgPicture.asset(
+                    "assets/icons/iconregister.svg",
+                    height: size.height * 0.35,
+                  ),
+                  RoundedInputField(
+                    hintText: "Your email",
+                    onChanged: (value) {
+                      _email = value;
+                    },
+                  ),
+                  RoundedPasswordField(
+                    onChanged: (value) {
+                      _password = value;
+                    },
+                  ),
+                  RoundedPasswordField(
+                    onChanged: (value) {
+                      _password = value;
+                    },
+                  ),
+                  const RoundedButton(
+                    text: "REGISTER",
+                    color: Color(0xFF0288D1),
+                  ),
+                ],
               ),
-            ],
-          ),
-          firstImage: firstAsset,
-          secondImage: secondAsset,
+            ),
+          ],
         ),
+        firstImage: "assets/images/ellipseregister.png",
+        secondImage: "assets/images/ellipseregister2.png",
       ),
     );
   }
