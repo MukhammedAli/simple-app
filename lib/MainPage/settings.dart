@@ -221,7 +221,7 @@ class _SettingsState extends State<Settings> {
                   children: [
                     OutlineButton(
 
-                      child: Text((cllii.click==false)? backString = "Dark": backString = "White",style: TextStyle(fontSize: 20,
+                      child: Text((cllii.click==false)? backString = "Dark": backString = "Light",style: TextStyle(fontSize: 20,
                       color: (cllii.click==false)? Colors.black: Colors.white,
                       )),
                       onPressed: (){

@@ -52,16 +52,17 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
         body: Center(
           child: _widgetOptions[_selectedTab],
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: AppColor.dark,
-          items: const [
-            Icon(Icons.home, size: 35),
-            Icon(Icons.search, size: 35),
-            Icon(Icons.settings, size: 35),
+          backgroundColor: (cllii.click==false)? Colors.white: dark,
+          color: (cllii.click==false)? dark: Colors.white,
+          items:  [
+            Icon(Icons.home, size: 35,color:(cllii.click==false)? Colors.white: Colors.black,),
+            Icon(Icons.search, size: 35,color: (cllii.click==false)? Colors.white: Colors.black,),
+            Icon(Icons.settings, size: 35, color: (cllii.click==false)? Colors.white: Colors.black,),
           ],
           onTap: onSelected,
         ));
