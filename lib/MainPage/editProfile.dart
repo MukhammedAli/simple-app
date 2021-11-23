@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:myapp2/MainPage/settings.dart';
 
 import '../colors.dart';
 
@@ -29,6 +30,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
       ),
       body: Container(
+        color: (cllii.click==false)? Colors.white: dark,
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
           onTap: () {
@@ -44,7 +46,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: 4,
-                            color: Theme.of(context).scaffoldBackgroundColor),
+                            color: (cllii.click==false)? Colors.white: dark,
+    ),
                         boxShadow: [
                           BoxShadow(
                               spreadRadius: 2,
@@ -70,7 +73,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
+                              color: (cllii.click==false)? Colors.white: dark,
                             ),
                             color: Colors.green,
                           ),
@@ -105,7 +108,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   OutlineButton(
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20),),
+
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -113,7 +117,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         style: TextStyle(
                             fontSize: 14,
                             letterSpacing: 2.2,
-                            color: Colors.black)),
+                            color: (cllii.click==false)? Colors.black: Colors.white,)),
                   ),
                   RaisedButton(
                     onPressed: () {
@@ -186,7 +190,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
-        obscureText: isPasswordTextField ? showPassword : false,
+        obscureText:
+        isPasswordTextField ? showPassword : false,
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
                 ? IconButton(
@@ -203,12 +208,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 : null,
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
+            labelStyle: TextStyle(color: (cllii.click==false)? Colors.black: Colors.white),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: placeholder,
-            hintStyle: TextStyle(
+
+            hintStyle:
+            TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: (cllii.click==false)? Colors.black: Colors.white,
             )),
       ),
     );
