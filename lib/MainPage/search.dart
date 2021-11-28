@@ -10,7 +10,6 @@ import 'package:myapp2/Weather_app/weather_runner.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/MainPage/settings.dart';
-
 import '../BauncyPageRoute.dart';
 import '../colors.dart';
 
@@ -25,7 +24,7 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: (cllii.click==false)? Colors.white: dark,
+      backgroundColor: (cllii.click == false) ? Colors.white : dark,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [

@@ -28,7 +28,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 35.0),
       child: TextField(
-        style: TextStyle(color: (cllii.click == false) ? Colors.black : Colors.white),
+        style: TextStyle(
+            color: (cllii.click == false) ? Colors.black : Colors.white),
         obscureText: isPasswordTextField ? showPassword : false,
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
