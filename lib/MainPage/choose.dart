@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
+import 'package:myapp2/chatdir/chat_app.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/NoteApp/screens/taskscreen.dart';
@@ -154,6 +155,14 @@ class _SafeState extends State<Safe> {
             color: white, // color of a text
           ),
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.message),
+            onPressed: () {
+              Navigator.push(context, BouncyPageRoute(widget: const ChatApp()));
+            },
+          )
+        ],
         toolbarHeight: 70,
         centerTitle: true,
         elevation: 0,
