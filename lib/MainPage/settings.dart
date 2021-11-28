@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp2/NewLogin/Login/body_widget.dart';
 import 'package:myapp2/NewLogin/welcome_page.dart';
 import 'package:myapp2/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,27 +9,40 @@ import 'package:myapp2/login/login.dart';
 
 import 'editProfile.dart';
 
+String _message = "";
+
 class Settings extends StatefulWidget {
   @override
   _SettingsState createState() => _SettingsState();
 }
 
-final List locale=[
-  {'name':'ENGLISH','locale': Locale('en','US')},
-  {'name':'RUSSIAN','locale': Locale('ru','RU')},
+final List locale = [
+  {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
+  {'name': 'RUSSIAN', 'locale': Locale('ru', 'RU')},
 ];
 
-updateLanguage(Locale locale){
+updateLanguage(Locale locale) {
   Get.back();
   Get.updateLocale(locale);
 }
 
-
-
-
-
-
 class _SettingsState extends State<Settings> {
+  Widget returnWidget() {
+    return Text(_message);
+  }
+
+  void _showToast(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+          content: Text(_message),
+          action: SnackBarAction(
+            label: 'UNDO',
+            onPressed: scaffold.hideCurrentSnackBar,
+          )),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +50,7 @@ class _SettingsState extends State<Settings> {
         automaticallyImplyLeading: false,
         backgroundColor: topaz,
         title: Text(
-            'Settings'.tr,
+          'Settings'.tr,
           style: GoogleFonts.raleway(
             fontSize: 40,
             fontWeight: FontWeight.w600,
@@ -64,7 +78,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Account".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: yellow),
                   ),
                 ],
               ),
@@ -94,7 +111,10 @@ class _SettingsState extends State<Settings> {
                   ),
                   Text(
                     "Notifications".tr,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: yellow),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: yellow),
                   ),
                 ],
               ),
@@ -112,20 +132,17 @@ class _SettingsState extends State<Settings> {
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                   child: OutlinedButton(
-
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(width: 1.0, color: Colors.white)
-                    ),
+                        side: BorderSide(width: 1.0, color: Colors.white)),
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
                     //     borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) => WelcomeScreen()));
-                    },
+                    onPressed: () {},
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
-                            fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
+                            fontSize: 16,
+                            letterSpacing: 2.2,
+                            color: Colors.white)),
                   ),
                 ),
               ),
@@ -219,17 +236,17 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
                 width: double.maxFinite,
                 child: ListView.separated(
                     shrinkWrap: true,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               updateLanguage(locale[index]['locale']);
                             },
                             child: Text(locale[index]['name'])),
                       );
                     },
-                    separatorBuilder: (context,index){
+                    separatorBuilder: (context, index) {
                       return Divider(
                         color: Colors.blue,
                       );
@@ -261,12 +278,12 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
     ),
   );
 }
+
 GestureDetector buildEditProfile(BuildContext context, String title) {
   return GestureDetector(
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => EditProfilePage()));
-
     },
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

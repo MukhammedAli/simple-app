@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "563877437871",
+    "project_id": "chat-application-1b70a",
+    "storage_bucket": "chat-application-1b70a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563877437871:android:8c115075b81fddc78a4f5a",
+        "android_client_info": {
+          "package_name": "com.zergs.myapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563877437871-tg00mo3fm7k63k2sq4adbo3vfb2uq6up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd1xouk7WwPI8r54g-I49tbBuG2zgdGMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563877437871-tg00mo3fm7k63k2sq4adbo3vfb2uq6up.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
