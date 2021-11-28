@@ -56,11 +56,24 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
           child: _widgetOptions[_selectedTab],
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: AppColor.dark,
-          items: const [
-            Icon(Icons.home, size: 35),
-            Icon(Icons.search, size: 35),
-            Icon(Icons.settings, size: 35),
+          backgroundColor: (cllii.click == false) ? Colors.white : dark,
+          color: (cllii.click == false) ? dark : Colors.white,
+          items: [
+            Icon(
+              Icons.home,
+              size: 35,
+              color: (cllii.click == false) ? Colors.white : Colors.black,
+            ),
+            Icon(
+              Icons.search,
+              size: 35,
+              color: (cllii.click == false) ? Colors.white : Colors.black,
+            ),
+            Icon(
+              Icons.settings,
+              size: 35,
+              color: (cllii.click == false) ? Colors.white : Colors.black,
+            ),
           ],
           onTap: onSelected,
         ));
@@ -123,8 +136,9 @@ class _SafeState extends State<Safe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: dark, // background color of a page
-
+      backgroundColor: (cllii.click == false)
+          ? Colors.white
+          : dark, // background color of a page// background color of a page
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(

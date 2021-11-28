@@ -11,6 +11,10 @@ import 'editProfile.dart';
 
 String _message = "";
 
+class cllii {
+  static bool click = true;
+}
+
 class Settings extends StatefulWidget {
   @override
   _SettingsState createState() => _SettingsState();
@@ -26,23 +30,25 @@ updateLanguage(Locale locale) {
   Get.updateLocale(locale);
 }
 
+// class _SettingsState extends State<Settings> {
+//   Widget returnWidget() {
+//     return Text(_message);
+//   }
+//
+//   void _showToast(BuildContext context) {
+//     final scaffold = ScaffoldMessenger.of(context);
+//     scaffold.showSnackBar(
+//       SnackBar(
+//           content: Text(_message),
+//           action: SnackBarAction(
+//             label: 'UNDO',
+//             onPressed: scaffold.hideCurrentSnackBar,
+//           )),
+//     );
+//   }
+
 class _SettingsState extends State<Settings> {
-  Widget returnWidget() {
-    return Text(_message);
-  }
-
-  void _showToast(BuildContext context) {
-    final scaffold = ScaffoldMessenger.of(context);
-    scaffold.showSnackBar(
-      SnackBar(
-          content: Text(_message),
-          action: SnackBarAction(
-            label: 'UNDO',
-            onPressed: scaffold.hideCurrentSnackBar,
-          )),
-    );
-  }
-
+  String backString = "Dark";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,18 +68,18 @@ class _SettingsState extends State<Settings> {
         elevation: 0,
       ),
       body: Container(
-        color: dark,
+        color: (cllii.click == false) ? Colors.white : dark,
         child: Scrollbar(
           child: ListView(
             padding: EdgeInsets.only(left: 16, top: 25, right: 16),
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.person,
                     color: Colors.green,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(
@@ -81,32 +87,34 @@ class _SettingsState extends State<Settings> {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: yellow),
+                        color: (cllii.click == false)
+                            ? Colors.black
+                            : Colors.yellow),
                   ),
                 ],
               ),
-              Divider(
+              const Divider(
                 height: 15,
                 thickness: 2,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               buildEditProfile(context, "Edit Profile".tr),
               buildAccountOptionRow(context, "Content settings".tr),
-              buildAccountOptionRow(context, "Background".tr),
+              backgroundRow(context, "Background".tr),
               buildLanguageOptionRow(context, "Language".tr),
               buildAccountOptionRow(context, "Privacy".tr),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.volume_up_outlined,
                     color: Colors.green,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(
@@ -114,15 +122,17 @@ class _SettingsState extends State<Settings> {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: yellow),
+                        color: (cllii.click == false)
+                            ? Colors.black
+                            : Colors.yellow),
                   ),
                 ],
               ),
-              Divider(
+              const Divider(
                 height: 15,
                 thickness: 2,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               buildNotificationOptionRow("New for you".tr, true),
@@ -130,10 +140,15 @@ class _SettingsState extends State<Settings> {
               buildNotificationOptionRow("Updates".tr, false),
               Center(
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 30),
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        side: BorderSide(width: 1.0, color: Colors.white)),
+                        side: BorderSide(
+                            width: 1.0,
+                            color: (cllii.click == false)
+                                ? Colors.black
+                                : Colors.white)),
+
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
                     //     borderRadius: BorderRadius.circular(20)),
@@ -142,7 +157,9 @@ class _SettingsState extends State<Settings> {
                         style: TextStyle(
                             fontSize: 16,
                             letterSpacing: 2.2,
-                            color: Colors.white)),
+                            color: (cllii.click == false)
+                                ? Colors.black
+                                : Colors.white)),
                   ),
                 ),
               ),
@@ -162,7 +179,7 @@ class _SettingsState extends State<Settings> {
           style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300]),
+              color: (cllii.click == false) ? Colors.black : Colors.grey[300]),
         ),
         Transform.scale(
             scale: 0.7,
@@ -184,8 +201,10 @@ class _SettingsState extends State<Settings> {
                 title: Text(title),
                 content: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("Option 1"),
+                  children: const [
+                    Text(
+                      "Option 1",
+                    ),
                     Text("Option 2"),
                     Text("Option 3"),
                   ],
@@ -210,10 +229,87 @@ class _SettingsState extends State<Settings> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey[300],
+                color: (cllii.click == false) ? Colors.black : Colors.grey[300],
               ),
             ),
-            Icon(
+            const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.grey,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector backgroundRow(BuildContext context, String title) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                backgroundColor: (cllii.click == false) ? Colors.white : dark,
+                title: Text(
+                  title,
+                  style: TextStyle(
+                    color: (cllii.click == false) ? Colors.black : Colors.white,
+                  ),
+                ),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    OutlineButton(
+                      child: Text(
+                          (cllii.click == false)
+                              ? backString = "Dark"
+                              : backString = "Light",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: (cllii.click == false)
+                                ? Colors.black
+                                : Colors.white,
+                          )),
+                      onPressed: () {
+                        setState(() {
+                          cllii.click = !cllii.click;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                actions: [
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Close".tr,
+                      style: TextStyle(
+                        color: (cllii.click == false)
+                            ? Colors.black
+                            : Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            });
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: (cllii.click == false) ? Colors.black : Colors.grey[300],
+              ),
+            ),
+            const Icon(
               Icons.arrow_forward_ios,
               color: Colors.grey,
             ),
@@ -231,8 +327,8 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Choose a language'),
-              content: Container(
+              title: const Text('Choose a language'),
+              content: SizedBox(
                 width: double.maxFinite,
                 child: ListView.separated(
                     shrinkWrap: true,
@@ -247,7 +343,7 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return Divider(
+                      return const Divider(
                         color: Colors.blue,
                       );
                     },
@@ -266,10 +362,10 @@ GestureDetector buildLanguageOptionRow(BuildContext context, String title) {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300],
+              color: (cllii.click == false) ? Colors.black : Colors.grey[300],
             ),
           ),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios,
             color: Colors.grey,
           ),
@@ -295,10 +391,10 @@ GestureDetector buildEditProfile(BuildContext context, String title) {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[300],
+              color: (cllii.click == false) ? Colors.black : Colors.grey[300],
             ),
           ),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios,
             color: Colors.grey,
           ),
