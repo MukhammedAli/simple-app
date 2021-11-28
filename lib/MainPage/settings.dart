@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,6 +49,7 @@ updateLanguage(Locale locale) {
 //   }
 
 class _SettingsState extends State<Settings> {
+  final _auth = FirebaseAuth.instance;
   String backString = "Dark";
   @override
   Widget build(BuildContext context) {
@@ -152,7 +154,10 @@ class _SettingsState extends State<Settings> {
                     // padding: EdgeInsets.symmetric(horizontal: 40),
                     // shape: RoundedRectangleBorder(
                     //     borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () {
+                      _auth.signOut();
+                      Navigator.pop(context);
+                    },
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
                             fontSize: 16,

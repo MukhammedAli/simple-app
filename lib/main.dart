@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/MainPage/loading.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
+import 'package:myapp2/chatdir/chat_app.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/TimeApp/home.dart';
@@ -22,6 +23,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
+        '/chat': (context) => const ChatApp(),
         '/first': (context) => const LoadingPage(),
         '/second': (context) => const ListOfWidgets(),
         '/time-app': (context) => const Home(),
