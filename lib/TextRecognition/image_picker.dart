@@ -14,7 +14,7 @@ class UserImagePicker extends StatefulWidget {
   _UserImagePickerState createState() => _UserImagePickerState();
 }
 class _UserImagePickerState extends State<UserImagePicker> {
-  late File _pickedImage;
+  File _pickedImage = File("assets/text_recognition/text.jpg");
   ImagePicker picker = ImagePicker();
 
   void _pickImage(ImageSource imageSource) async {
