@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:myapp2/NewLogin/Login/background_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
   final _auth = FirebaseAuth.instance;
   String _email = "";
   String _password = "";
+  bool showSpinner = false;
   // @override
   // void initState() {
   //   super.initState();
@@ -37,71 +39,80 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: BackgroundWidget(
-        child: ListView(
-          padding: EdgeInsets.only(top: 110),
-          children: [
-            Form(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text("REGISTER",
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold)),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SvgPicture.asset(
-                    "assets/icons/iconregister.svg",
-                    height: size.height * 0.35,
-                  ),
-                  RoundedInputField(
-                    // txtUserName: txtUserName,
-                    hintText: "Your email",
-                    onChanged: (value) {
-                      _email = value;
-                    },
-                  ),
-                  RoundedPasswordField(
-                    // txtPassword: txtPassword,
-                    onChanged: (value) {
-                      _password = value;
-                    },
-                  ),
-                  RoundedPasswordField(
-                      //txtPassword: txtPassword,
-                      // onChanged: (value) {
-                      //   _password = value;
-                      // },
-                      ),
-                  RoundedButton(
-                      text: "REGISTER",
-                      color: Color(0xFF0288D1),
-                      press: () async {
-                        // print(_email);
-                        // print(_password);
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: BackgroundWidget(
+          child: ListView(
+            padding: EdgeInsets.only(top: 110),
+            children: [
+              Form(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text("REGISTER",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold)),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SvgPicture.asset(
+                      "assets/icons/iconregister.svg",
+                      height: size.height * 0.35,
+                    ),
+                    RoundedInputField(
+                      // txtUserName: txtUserName,
+                      hintText: "Your email",
+                      onChanged: (value) {
+                        _email = value;
+                      },
+                    ),
+                    RoundedPasswordField(
+                      // txtPassword: txtPassword,
+                      onChanged: (value) {
+                        _password = value;
+                      },
+                    ),
+                    RoundedPasswordField(
+                        //txtPassword: txtPassword,
+                        // onChanged: (value) {
+                        //   _password = value;
+                        // },
+                        ),
+                    RoundedButton(
+                        text: "REGISTER",
+                        color: Color(0xFF0288D1),
+                        press: () async {
+                          // print(_email);
+                          // print(_password);
+                          setState(() {
+                            showSpinner = true;
+                          });
 
-                        try {
-                          final newUser =
-                              await _auth.createUserWithEmailAndPassword(
-                                  email: _email, password: _password);
-                          if (newUser != null) {
-                            Navigator.push(context,
-                                BouncyPageRoute(widget: LoginScreen()));
+                          try {
+                            final newUser =
+                                await _auth.createUserWithEmailAndPassword(
+                                    email: _email, password: _password);
+                            if (newUser != null) {
+                              Navigator.push(context,
+                                  BouncyPageRoute(widget: LoginScreen()));
+                            }
+                            setState(() {
+                              showSpinner = false;
+                            });
+                          } catch (e) {
+                            print(e);
                           }
-                        } catch (e) {
-                          print(e);
-                        }
-                      }),
-                ],
+                        }),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+          firstImage: "assets/images/ellipseregister.png",
+          secondImage: "assets/images/ellipseregister2.png",
         ),
-        firstImage: "assets/images/ellipseregister.png",
-        secondImage: "assets/images/ellipseregister2.png",
       ),
     );
   }
@@ -112,7 +123,7 @@ class RoundedButton extends StatefulWidget {
   final Function? press;
   final Color? color, textColor;
 
-  const RoundedButton({
+  RoundedButton({
     Key? key,
     this.text,
     this.press,

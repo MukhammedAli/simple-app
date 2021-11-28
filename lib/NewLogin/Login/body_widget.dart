@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/NewLogin/Login/shared/firebase_authentication.dart';
@@ -22,6 +23,7 @@ class BodyWidget extends StatefulWidget {
 }
 
 class BodyWidgetState extends State<BodyWidget> {
+  bool showSpinner = false;
   final authSend = FirebaseAuth.instance;
   String email = "";
   String password = "";
@@ -45,79 +47,90 @@ class BodyWidgetState extends State<BodyWidget> {
     firstAsset = "assets/images/ending.png";
     secondAsset = "assets/images/ellipseforlog2.png";
     return Scaffold(
-      body: Form(
-        key: formKey,
-        child: BackgroundWidget(
-          child: ListView(
-            padding: EdgeInsets.only(top: 110),
-            children: [
-              Form(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text("LOG IN",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold)),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SvgPicture.asset(
-                      "assets/icons/svgfornewlog.svg",
-                      height: size.height * 0.35,
-                    ),
-                    RoundedInputField(
-                      // txtUserName: txtUserName,
-                      hintText: "Your email",
-                      onChanged: (value) {
-                        email = value;
-                      },
-                    ),
-                    RoundedPasswordField(
-                      //txtPassword: txtPassword,
-                      onChanged: (value) {
-                        password = value;
-                      },
-                    ),
-                    RoundedButton(
-                      text: "LOGIN",
-                      press: () async {
-                        try {
-                          final user =
-                              await authSend.signInWithEmailAndPassword(
-                                  email: email, password: password);
-                          if (user != null) {
-                            Navigator.push(context,
-                                BouncyPageRoute(widget: const ListOfWidgets()));
-                          }
-                        } catch (e) {}
-                        ;
-                      },
-                      color: Colors.blueAccent,
-                    ),
-                    Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("Don't have an Accounnt?",
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold)),
-                          Text("Sign in",
-                              style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold)),
-                        ],
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Form(
+          key: formKey,
+          child: BackgroundWidget(
+            child: ListView(
+              padding: EdgeInsets.only(top: 110),
+              children: [
+                Form(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text("LOG IN",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold)),
+                      const SizedBox(
+                        height: 10,
                       ),
-                    )
-                  ],
+                      SvgPicture.asset(
+                        "assets/icons/svgfornewlog.svg",
+                        height: size.height * 0.35,
+                      ),
+                      RoundedInputField(
+                        // txtUserName: txtUserName,
+                        hintText: "Your email",
+                        onChanged: (value) {
+                          email = value;
+                        },
+                      ),
+                      RoundedPasswordField(
+                        //txtPassword: txtPassword,
+                        onChanged: (value) {
+                          password = value;
+                        },
+                      ),
+                      RoundedButton(
+                        text: "LOGIN",
+                        press: () async {
+                          setState(() {
+                            showSpinner = true;
+                          });
+                          try {
+                            final user =
+                                await authSend.signInWithEmailAndPassword(
+                                    email: email, password: password);
+                            if (user != null) {
+                              Navigator.push(
+                                  context,
+                                  BouncyPageRoute(
+                                      widget: const ListOfWidgets()));
+                            }
+                            setState(() {
+                              showSpinner = false;
+                            });
+                          } catch (e) {}
+                          ;
+                        },
+                        color: Colors.blueAccent,
+                      ),
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text("Don't have an Accounnt?",
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold)),
+                            Text("Sign in",
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
+            firstImage: firstAsset,
+            secondImage: secondAsset,
           ),
-          firstImage: firstAsset,
-          secondImage: secondAsset,
         ),
       ),
     );
