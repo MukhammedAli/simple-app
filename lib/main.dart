@@ -10,6 +10,7 @@ import 'package:myapp2/TimeApp/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/GoogleMap/map.dart';
+import 'package:myapp2/TextRecognition/text_recognition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ void main() async {
         '/google-maps': (context) => MapScreen(),
         '/': (context) => const Loading(),
         '/weather': (context) => Weather(),
+        '/text-recognition' : (context) => TextRecognition(),
         //'/home': (context) => const ListOfWidgets(),
       },
       theme: ThemeData(

@@ -14,6 +14,7 @@ import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp2/TextRecognition/text_recognition.dart';
 
 final widgets = [
   'Time App',
@@ -21,7 +22,8 @@ final widgets = [
   'Music Player',
   'Example',
   'Note',
-  'Map'
+  'Map',
+  'Text Recognition',
 ];
 
 class ListOfWidgets extends StatefulWidget {
@@ -87,7 +89,8 @@ class _SafeState extends State<Safe> {
     const MusicApp(),
     const MyExample(),
     const TasksScreen(),
-    MapScreen()
+    MapScreen(),
+    TextRecognition(),
   ];
 
   List<String> myRoute = [
@@ -96,7 +99,8 @@ class _SafeState extends State<Safe> {
     '/music_player',
     '/test_page',
     '/notification',
-    '/google-maps'
+    '/google-maps',
+    '/text-recognition',
   ];
 
   final List<String> _widgetIcon = <String>[
@@ -105,6 +109,7 @@ class _SafeState extends State<Safe> {
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
+    'assets/icons/mapIcon.png',
     'assets/icons/mapIcon.png'
   ];
 
@@ -114,7 +119,8 @@ class _SafeState extends State<Safe> {
     "Listen to your favourite music.",
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
-    "Find your place in the world."
+    "Find your place in the world.",
+    "Get the text from image."
   ];
 
   @override
