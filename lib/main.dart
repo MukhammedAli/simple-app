@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/MainPage/loading.dart';
+import 'package:myapp2/PaintApp/paint.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
+import 'package:myapp2/chatdir/chat_app.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/TimeApp/home.dart';
@@ -10,10 +12,10 @@ import 'package:myapp2/TimeApp/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/GoogleMap/map.dart';
-import 'package:myapp2/TextRecognition/text_recognition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
 
   runApp(
@@ -22,6 +24,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
+        '/chat': (context) => const ChatApp(),
         '/first': (context) => const LoadingPage(),
         '/second': (context) => const ListOfWidgets(),
         '/time-app': (context) => const Home(),
@@ -31,7 +34,7 @@ void main() async {
         '/google-maps': (context) => MapScreen(),
         '/': (context) => const Loading(),
         '/weather': (context) => Weather(),
-        '/text-recognition' : (context) => TextRecognition(),
+        '/paint': (context) => PaintApp(),
         //'/home': (context) => const ListOfWidgets(),
       },
       theme: ThemeData(
