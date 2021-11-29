@@ -49,7 +49,7 @@ dependencies:
   firebase_core: ^1.10.0
   firebase_auth: ^3.2.0
   cloud_firestore: ^3.1.0
-  firebase_ml_vision: ^0.9.7
+  google_ml_kit: ^0.7.3
   image_picker: ^0.8.4+4
   geolocator: ^7.7.1
   clipboard: ^0.1.2+8

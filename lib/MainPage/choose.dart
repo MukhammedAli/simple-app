@@ -110,7 +110,7 @@ class _SafeState extends State<Safe> {
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png',
-    'assets/icons/mapIcon.png'
+    'assets/icons/textIcon.png'
   ];
 
   final List<String> _widgetDesc = <String>[
@@ -120,7 +120,7 @@ class _SafeState extends State<Safe> {
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
     "Find your place in the world.",
-    "Get the text from image."
+    "Get Latin-script text from an image."
   ];
 
   @override
@@ -163,7 +163,7 @@ class _SafeState extends State<Safe> {
                             location: 'Almaty',
                             flag: 'kazakstan.png',
                             url: "Asia/Almaty");
-                        instance.getTime();
+                        // instance.getTime();
                         if (index == 0) {
                           await instance.getTime();
                           Navigator.pushNamed(context, '/time-app',

@@ -15,7 +15,7 @@ class TextAreaWidget extends StatelessWidget {
     children: [
       Expanded(
         child: Container(
-          height: 100,
+          height: 175,
           decoration: BoxDecoration(border: Border.all()),
           padding: EdgeInsets.all(8),
           alignment: Alignment.center,
@@ -25,9 +25,9 @@ class TextAreaWidget extends StatelessWidget {
           ),
         ),
       ),
-      const SizedBox(width: 8),
+      const SizedBox(width: 10),
       IconButton(
-        icon: Icon(Icons.copy, color: Colors.black),
+        icon: Icon(Icons.copy, color: Colors.black, size: 35),
         color: Colors.grey[200],
         onPressed: onClickedCopy,
       ),
