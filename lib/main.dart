@@ -14,7 +14,6 @@ import 'package:myapp2/TextRecognition/text_recognition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp();
 
   runApp(
