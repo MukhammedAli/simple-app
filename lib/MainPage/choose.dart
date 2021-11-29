@@ -1,6 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp2/BMICalculator/bmimainpage.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
@@ -10,7 +9,6 @@ import 'package:myapp2/components_of_music_app/music_player.dart';
 import 'package:myapp2/NoteApp/screens/taskscreen.dart';
 import 'package:myapp2/MainPage/search.dart';
 import 'package:myapp2/MainPage/settings.dart';
-import 'package:myapp2/TimeApp/choose_loc.dart';
 import 'package:myapp2/TimeApp/home.dart';
 import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
@@ -92,58 +90,56 @@ class Safe extends StatefulWidget {
 class _SafeState extends State<Safe> {
   List<Widget>? myWidget = [
     const Home(),
+    Weather(),
     const InputPage(),
     const MusicApp(),
     const MyExample(),
     const TasksScreen(),
     MapScreen(),
     TextRecognition(),
-    Weather(),
-    PaintApp(),
+    const PaintApp(),
   ];
 
   List<String> myRoute = [
     '/time-app',
+    '/weather',
     '/bmi-app',
     '/music_player',
     '/test_page',
     '/notification',
     '/google-maps',
     '/text-recognition',
-    '/weather',
     '/paint',
   ];
 
   final List<String> _widgetIcon = <String>[
     'assets/icons/timeIcon.png',
+    'assets/icons/mapIcon.png',
     'assets/icons/bmiIcon.png',
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png',
-    'assets/icons/textIcon.png'
-    'assets/icons/mapIcon.png',
+    'assets/icons/textIcon.png',
     'assets/icons/noteIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
     "Shows current time in selected location.",
+    "Shows current weather in selected location.",
     "Body Mass Index calculator.",
     "Listen to your favourite music.",
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
     "Find your place in the world.",
-    "Get Latin-script text from an image."
-    "Shows current weather in selected location.",
+    "Get Latin-script text from an image.",
     "Draw something bratishka",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       backgroundColor: dark, // background color of a page
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
@@ -202,9 +198,7 @@ class _SafeState extends State<Safe> {
                         }
                       },
                       child: Card(
-
                         color: white, // main color of a Card
-
                         elevation: 12,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),

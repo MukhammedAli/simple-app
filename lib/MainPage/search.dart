@@ -13,6 +13,9 @@ import 'package:myapp2/MainPage/settings.dart';
 import '../BauncyPageRoute.dart';
 import '../colors.dart';
 import 'package:myapp2/TextRecognition/text_recognition.dart';
+import 'package:myapp2/PaintApp/paint.dart';
+import 'package:myapp2/Weather_app/weather_runner.dart';
+
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -81,7 +84,8 @@ class WidgetSearch extends SearchDelegate<String> {
     'Note',
     'Maps',
     'Weather',
-    'Text Recognition'
+    'Text Recognition',
+    'Paint'
   ];
 
   final recentWidgets = [
@@ -99,6 +103,7 @@ class WidgetSearch extends SearchDelegate<String> {
     MapScreen(),
     Weather(),
     TextRecognition(),
+    const PaintApp(),
   ];
 
   @override
@@ -152,6 +157,9 @@ class WidgetSearch extends SearchDelegate<String> {
     }
     else if (query == "Text Recognition") {
       Navigator.push(context, BouncyPageRoute(widget: myWidget![7]));
+    }
+    else if (query == "Paint") {
+      Navigator.push(context, BouncyPageRoute(widget: myWidget![8]));
     }
     super.showResults(context);
   }
