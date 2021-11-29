@@ -13,10 +13,10 @@ class WorldTime {
 
   Future<void> getTime() async {
     try {
-      Response response = await get(
-          Uri.parse("https://www.worldtimeapi.org/api/timezone/$url"));
+      var response = await get(
+          Uri.parse("http://www.worldtimeapi.org/api/timezone/$url"));
       Map data = jsonDecode(response.body);
-      //print(data);
+      print(data);
 
       //get property from data
       String datetime = data["datetime"];
@@ -27,10 +27,12 @@ class WorldTime {
       //create date time object
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
+      //print(now);
       isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
-      time = 'could not get time data';
+      // time = 'could not get time data';
+      time = e.toString();
     }
   }
 }

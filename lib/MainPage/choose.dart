@@ -21,13 +21,13 @@ import 'package:myapp2/PaintApp/paint.dart';
 
 final widgets = [
   'Time App',
+  'Weather App',
   'BMI Calculator',
   'Music Player',
   'Example',
   'Note',
   'Map',
   'Text Recognition',
-  'Weather App',
   'Paint App',
 ];
 
@@ -180,9 +180,9 @@ class _SafeState extends State<Safe> {
                       onTap: () async {
                         instance = WorldTime(
                             location: 'Almaty',
-                            flag: 'kazakstan.png',
-                            url: "Asia/Almaty");
-                        // instance.getTime();
+                            flag: 'flags/kz.png',
+                            url: "Asia/Almaty"
+                        );
                         if (index == 0) {
                           await instance.getTime();
                           Navigator.pushNamed(context, '/time-app',
