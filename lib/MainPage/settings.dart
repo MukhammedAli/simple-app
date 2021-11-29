@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/NewLogin/Login/body_widget.dart';
+import 'package:myapp2/NewLogin/Login/login_screen.dart';
 import 'package:myapp2/NewLogin/welcome_page.dart';
 import 'package:myapp2/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -156,7 +158,8 @@ class _SettingsState extends State<Settings> {
                     //     borderRadius: BorderRadius.circular(20)),
                     onPressed: () {
                       _auth.signOut();
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context, BouncyPageRoute(widget: LoginScreen()));
                     },
                     child: Text("SIGN OUT".tr,
                         style: TextStyle(
