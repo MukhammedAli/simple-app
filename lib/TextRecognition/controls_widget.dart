@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ControlsWidget extends StatelessWidget {
   final VoidCallback onClickedPickImage;
@@ -17,18 +18,45 @@ class ControlsWidget extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.lightBlue,
+        ),
         onPressed: onClickedPickImage,
-        child: Text('Pick Image'),
+        child: Text(
+            'Pick Image',
+            style: GoogleFonts.raleway(
+                fontSize: 17,
+                fontWeight: FontWeight.w600
+            )
+        ),
       ),
       const SizedBox(width: 12),
       ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.lightBlue,
+        ),
         onPressed: onClickedScanText,
-        child: Text('Scan For Text'),
+        child: Text(
+            'Scan For Text',
+            style: GoogleFonts.raleway(
+                fontSize: 17,
+                fontWeight: FontWeight.w600
+            )
+        ),
       ),
       const SizedBox(width: 12),
       ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.lightBlue,
+        ),
         onPressed: onClickedClear,
-        child: Text('Clear'),
+        child: Text(
+            'Clear',
+            style: GoogleFonts.raleway(
+                fontSize: 17,
+                fontWeight: FontWeight.w600
+            )
+        ),
       )
     ],
   );

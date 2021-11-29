@@ -14,22 +14,8 @@ import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:myapp2/TextRecognition/text_recognition.dart';
-
 import 'package:myapp2/PaintApp/paint.dart';
-
-final widgets = [
-  'Time App',
-  'Weather App',
-  'BMI Calculator',
-  'Music Player',
-  'Example',
-  'Note',
-  'Map',
-  'Text Recognition',
-  'Paint App',
-];
 
 class ListOfWidgets extends StatefulWidget {
   const ListOfWidgets({Key? key}) : super(key: key);
@@ -65,10 +51,11 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: AppColor.dark,
+          color: topaz,
           items: const [
-            Icon(Icons.home, size: 35),
-            Icon(Icons.search, size: 35),
-            Icon(Icons.settings, size: 35),
+            Icon(Icons.home, size: 35, color: white),
+            Icon(Icons.search, size: 35, color: white),
+            Icon(Icons.settings, size: 35, color: white),
           ],
           onTap: onSelected,
         ));
@@ -88,40 +75,29 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
+
   List<Widget>? myWidget = [
-    const Home(),
-    Weather(),
-    const InputPage(),
-    const MusicApp(),
-    const MyExample(),
-    const TasksScreen(),
-    MapScreen(),
-    TextRecognition(),
-    const PaintApp(),
+    const Home(), Weather(), const InputPage(), const MusicApp(), const MyExample(), const TasksScreen(), MapScreen(), TextRecognition(), const PaintApp(),
+  ];
+
+  final widgets = [
+    'Time App', 'Weather App', 'BMI Calculator', 'Music Player', 'Example', 'Note', 'Map', 'Text Recognition', 'Paint App',
   ];
 
   List<String> myRoute = [
-    '/time-app',
-    '/weather',
-    '/bmi-app',
-    '/music_player',
-    '/test_page',
-    '/notification',
-    '/google-maps',
-    '/text-recognition',
-    '/paint',
+    '/time-app', '/weather', '/bmi-app', '/music_player', '/test_page', '/notification', '/google-maps', '/text-recognition', '/paint',
   ];
 
   final List<String> _widgetIcon = <String>[
     'assets/icons/timeIcon.png',
-    'assets/icons/mapIcon.png',
+    'assets/icons/weatherIcon.png',
     'assets/icons/bmiIcon.png',
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png',
     'assets/icons/textIcon.png',
-    'assets/icons/noteIcon.png',
+    'assets/icons/paintIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
@@ -133,7 +109,7 @@ class _SafeState extends State<Safe> {
     "If you forgot, then it wasn't important.",
     "Find your place in the world.",
     "Get Latin-script text from an image.",
-    "Draw something bratishka",
+    "Draw. Enjoy. Repeat.",
   ];
 
   @override
@@ -156,7 +132,7 @@ class _SafeState extends State<Safe> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.message),
+            icon: const Icon(Icons.message, color: white, size: 35),
             onPressed: () {
               Navigator.push(context, BouncyPageRoute(widget: const ChatApp()));
             },
@@ -181,11 +157,11 @@ class _SafeState extends State<Safe> {
                         instance = WorldTime(
                             location: 'Almaty',
                             flag: 'flags/kz.png',
-                            url: "Asia/Almaty"
+                            url: "Asia/Almaty",
                         );
                         if (index == 0) {
                           await instance.getTime();
-                          Navigator.pushNamed(context, '/time-app',
+                          Navigator.pushNamed(context, myRoute[index],
                               arguments: {
                                 'location': instance.location,
                                 'flag': instance.flag,

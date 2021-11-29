@@ -16,23 +16,19 @@ class WorldTime {
       var response = await get(
           Uri.parse("http://www.worldtimeapi.org/api/timezone/$url"));
       Map data = jsonDecode(response.body);
-      print(data);
+
 
       //get property from data
       String datetime = data["datetime"];
       String offset = data["utc_offset"].substring(1, 3);
-      //print(datetime);
-      //print(offset);
 
       //create date time object
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
-      //print(now);
       isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
-      // time = 'could not get time data';
-      time = e.toString();
+      time = 'could not get time data';
     }
   }
 }

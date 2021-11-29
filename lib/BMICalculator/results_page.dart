@@ -8,8 +8,10 @@ class ResultsPage extends StatelessWidget {
   const ResultsPage(
       {required this.bmiResult,
       required this.resultText,
-      required this.interpretation});
+      required this.interpretation,
+      required this.color});
 
+  final Color color;
   final String bmiResult;
   final String resultText;
   final String interpretation;
@@ -81,7 +83,11 @@ class ResultsPage extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       resultText.toUpperCase(),
-                      style: kResultTextStyle,
+                      style: TextStyle(
+                        color: color,
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.bold,
+                      )
                     ),
                     Text(
                       bmiResult,
