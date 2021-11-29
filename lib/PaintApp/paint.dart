@@ -9,7 +9,7 @@ class PaintApp extends StatefulWidget {
   @override
   _PaintAppState createState() => _PaintAppState();
 }
-
+// TODO: ERASER / FILL IN / DRAW LINES-CIRCLES-RECTANGLES / RGB PALETTE
 class _PaintAppState extends State<PaintApp> {
   Color selectedColor = Colors.black;
   double strokeWidth = 5;
@@ -22,6 +22,7 @@ class _PaintAppState extends State<PaintApp> {
     Colors.amber,
     Colors.black,
     Colors.purple,
+    Colors.white,
   ];
 
   @override

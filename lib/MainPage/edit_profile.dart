@@ -5,6 +5,8 @@ import 'package:myapp2/MainPage/settings.dart';
 
 import '../colors.dart';
 
+// TODO: FOR EACH ACCOUNT WORKING PROFILE. WITH PFP AND BIO
+
 class EditProfilePage extends StatefulWidget {
   @override
   _EditProfilePageState createState() => _EditProfilePageState();

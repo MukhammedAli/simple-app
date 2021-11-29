@@ -10,7 +10,7 @@ import 'package:myapp2/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp2/login/login.dart';
 
-import 'editProfile.dart';
+import 'edit_profile.dart';
 
 String _message = "";
 

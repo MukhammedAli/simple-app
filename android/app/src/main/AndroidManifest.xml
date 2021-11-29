@@ -41,5 +41,8 @@
             android:value="2" />
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyBf0hSbO3CQSDp14IEmFf_5sBHBIUVA-Ks"/>
+       <meta-data
+       android:name="com.google.mlkit.vision.DEPENDENCIES"
+       android:value="ica" />
     </application>
 </manifest>

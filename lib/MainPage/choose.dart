@@ -14,18 +14,8 @@ import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp2/TextRecognition/text_recognition.dart';
 import 'package:myapp2/PaintApp/paint.dart';
-
-final widgets = [
-  'Time App',
-  'BMI Calculator',
-  'Music Player',
-  'Example',
-  'Note',
-  'Map',
-  'Weather App',
-  'Paint App',
-];
 
 class ListOfWidgets extends StatefulWidget {
   const ListOfWidgets({Key? key}) : super(key: key);
@@ -44,6 +34,7 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
     });
   }
 
+
   final List<Widget> _widgetOptions = <Widget>[
     const Safe(
       myRoute: [],
@@ -59,24 +50,12 @@ class _ListOfWidgetsState extends State<ListOfWidgets> {
           child: _widgetOptions[_selectedTab],
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: (cllii.click == false) ? Colors.white : dark,
-          color: (cllii.click == false) ? dark : Colors.white,
-          items: [
-            Icon(
-              Icons.home,
-              size: 35,
-              color: (cllii.click == false) ? Colors.white : Colors.black,
-            ),
-            Icon(
-              Icons.search,
-              size: 35,
-              color: (cllii.click == false) ? Colors.white : Colors.black,
-            ),
-            Icon(
-              Icons.settings,
-              size: 35,
-              color: (cllii.click == false) ? Colors.white : Colors.black,
-            ),
+          backgroundColor: AppColor.dark,
+          color: topaz,
+          items: const [
+            Icon(Icons.home, size: 35, color: white),
+            Icon(Icons.search, size: 35, color: white),
+            Icon(Icons.settings, size: 35, color: white),
           ],
           onTap: onSelected,
         ));
@@ -96,56 +75,47 @@ class Safe extends StatefulWidget {
 }
 
 class _SafeState extends State<Safe> {
+
   List<Widget>? myWidget = [
-    const Home(),
-    const InputPage(),
-    const MusicApp(),
-    const MyExample(),
-    const TasksScreen(),
-    MapScreen(),
-    Weather(),
-    PaintApp(),
+    const Home(), Weather(), const InputPage(), const MusicApp(), const MyExample(), const TasksScreen(), MapScreen(), TextRecognition(), const PaintApp(),
+  ];
+
+  final widgets = [
+    'Time App', 'Weather App', 'BMI Calculator', 'Music Player', 'Example', 'Note', 'Map', 'Text Recognition', 'Paint App',
   ];
 
   List<String> myRoute = [
-    '/time-app',
-    '/bmi-app',
-    '/music_player',
-    '/test_page',
-    '/notification',
-    '/google-maps',
-    '/weather',
-    '/paint',
+    '/time-app', '/weather', '/bmi-app', '/music_player', '/test_page', '/notification', '/google-maps', '/text-recognition', '/paint',
   ];
 
   final List<String> _widgetIcon = <String>[
     'assets/icons/timeIcon.png',
+    'assets/icons/weatherIcon.png',
     'assets/icons/bmiIcon.png',
     'assets/icons/playerIcon.png',
     'assets/icons/flutterIcon.png',
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png',
-    'assets/icons/mapIcon.png',
-    'assets/icons/noteIcon.png',
+    'assets/icons/textIcon.png',
+    'assets/icons/paintIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
     "Shows current time in selected location.",
+    "Shows current weather in selected location.",
     "Body Mass Index calculator.",
     "Listen to your favourite music.",
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
     "Find your place in the world.",
-    "Shows current weather in selected location.",
-    "Draw something bratishka",
+    "Get Latin-script text from an image.",
+    "Draw. Enjoy. Repeat.",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: (cllii.click == false)
-          ? Colors.white
-          : dark, // background color of a page// background color of a page
+      backgroundColor: dark, // background color of a page
       appBar: AppBar(
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(
@@ -154,16 +124,15 @@ class _SafeState extends State<Safe> {
         backgroundColor: topaz, // color of an AppBarr
         title: Text(
           "Choose",
-          style: GoogleFonts.raleway(
-            // font of a main text of AppBar
+          style: GoogleFonts.raleway(  // font of a main text of AppBar
             fontSize: 40,
             fontWeight: FontWeight.w600,
-            color: white, // color of a text
+            color: white,  // color of a text
           ),
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.message),
+            icon: const Icon(Icons.message, color: white, size: 35),
             onPressed: () {
               Navigator.push(context, BouncyPageRoute(widget: const ChatApp()));
             },
@@ -187,17 +156,18 @@ class _SafeState extends State<Safe> {
                       onTap: () async {
                         instance = WorldTime(
                             location: 'Almaty',
-                            flag: 'kazakstan.png',
-                            url: "Asia/Almaty");
-                        instance.getTime();
+                            flag: 'flags/kz.png',
+                            url: "Asia/Almaty",
+                        );
                         if (index == 0) {
                           await instance.getTime();
-                          Navigator.pushNamed(context, '/time-app', arguments: {
-                            'location': instance.location,
-                            'flag': instance.flag,
-                            'time': instance.time,
-                            'isDayTime': instance.isDayTime,
-                          });
+                          Navigator.pushNamed(context, myRoute[index],
+                              arguments: {
+                                'location': instance.location,
+                                'flag': instance.flag,
+                                'time': instance.time,
+                                'isDayTime': instance.isDayTime,
+                              });
                         } else {
                           Navigator.push(context,
                               BouncyPageRoute(widget: myWidget![index]));
@@ -205,7 +175,6 @@ class _SafeState extends State<Safe> {
                       },
                       child: Card(
                         color: white, // main color of a Card
-
                         elevation: 12,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24),
@@ -233,28 +202,31 @@ class _SafeState extends State<Safe> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
-                                    Text(
+                                FittedBox(
+                                fit: BoxFit.fitWidth,
+                                  child: Text(
                                       widgets[index],
                                       style: GoogleFonts.raleway(
                                           fontSize: 30,
                                           fontWeight: FontWeight.w400,
                                           color: darkRed // Widget name's color
-                                          ),
+                                      ),
                                     ),
-                                    FittedBox(
-                                      fit: BoxFit.fitWidth,
-                                      child: Text(
+                                  ),
+                                  FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                    child: Text(
                                         _widgetDesc[index],
                                         style: GoogleFonts.raleway(
-                                            fontSize: 16,
-                                            color:
-                                                dark // Widget Description's color
-                                            ),
+                                          fontSize: 16,
+                                          color: dark // Widget Description's color
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+
                             ],
                           ),
                         ),

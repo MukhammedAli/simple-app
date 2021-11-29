@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
           const Text(
             "Welcome to Simple App",
             style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 20),
+                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
           ),
           SizedBox(height: size.height * 0.05),
           SvgPicture.asset(
