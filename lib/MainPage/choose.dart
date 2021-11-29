@@ -13,6 +13,7 @@ import 'package:myapp2/services/world_time.dart';
 import 'package:myapp2/GoogleMap/map.dart';
 import 'package:myapp2/ExampleApp/trying_to_use_mvc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp2/PaintApp/paint.dart';
 
 final widgets = [
   'Time App',
@@ -22,6 +23,7 @@ final widgets = [
   'Note',
   'Map',
   'Weather App',
+  'Paint App',
 ];
 
 class ListOfWidgets extends StatefulWidget {
@@ -101,6 +103,7 @@ class _SafeState extends State<Safe> {
     const TasksScreen(),
     MapScreen(),
     Weather(),
+    PaintApp(),
   ];
 
   List<String> myRoute = [
@@ -110,7 +113,8 @@ class _SafeState extends State<Safe> {
     '/test_page',
     '/notification',
     '/google-maps',
-    '/weather'
+    '/weather',
+    '/paint',
   ];
 
   final List<String> _widgetIcon = <String>[
@@ -121,6 +125,7 @@ class _SafeState extends State<Safe> {
     'assets/icons/noteIcon.png',
     'assets/icons/mapIcon.png',
     'assets/icons/mapIcon.png',
+    'assets/icons/noteIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
@@ -130,7 +135,8 @@ class _SafeState extends State<Safe> {
     "Example application for testing flutter.",
     "If you forgot, then it wasn't important.",
     "Find your place in the world.",
-    "Shows current weather in selected location."
+    "Shows current weather in selected location.",
+    "Draw something bratishka",
   ];
 
   @override

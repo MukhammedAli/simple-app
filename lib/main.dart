@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/MainPage/loading.dart';
+import 'package:myapp2/PaintApp/paint.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
@@ -31,6 +32,7 @@ void main() async {
         '/google-maps': (context) => MapScreen(),
         '/': (context) => const Loading(),
         '/weather': (context) => Weather(),
+        '/paint': (context) => PaintApp(),
         //'/home': (context) => const ListOfWidgets(),
       },
       theme: ThemeData(
