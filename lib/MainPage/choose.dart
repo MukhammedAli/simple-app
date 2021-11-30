@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp2/BMICalculator/input_page.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/Weather_app/weather_runner.dart';
+import 'package:myapp2/calculatorApp/calculatar.dart';
 import 'package:myapp2/chatdir/chat_app.dart';
 import 'package:myapp2/colors.dart';
 import 'package:myapp2/components_of_music_app/music_player.dart';
@@ -77,15 +78,16 @@ class Safe extends StatefulWidget {
 class _SafeState extends State<Safe> {
 
   List<Widget>? myWidget = [
-    const Home(), Weather(), const InputPage(), const MusicApp(), const MyExample(), const TasksScreen(), MapScreen(), TextRecognition(), const PaintApp(),
+    const Home(), Weather(), const InputPage(), const MusicApp(), const MyExample(), const TasksScreen(), MapScreen(), TextRecognition(),
+    const PaintApp(), CalculatorApp(),
   ];
 
   final widgets = [
-    'Time App', 'Weather App', 'BMI Calculator', 'Music Player', 'Example', 'Note', 'Map', 'Text Recognition', 'Paint App',
+    'Time App', 'Weather App', 'BMI Calculator', 'Music Player', 'Example', 'Note', 'Map', 'Text Recognition', 'Paint App','Calculator App'
   ];
 
   List<String> myRoute = [
-    '/time-app', '/weather', '/bmi-app', '/music_player', '/test_page', '/notification', '/google-maps', '/text-recognition', '/paint',
+    '/time-app', '/weather', '/bmi-app', '/music_player', '/test_page', '/notification', '/google-maps', '/text-recognition', '/paint', '/calculator'
   ];
 
   final List<String> _widgetIcon = <String>[
@@ -98,6 +100,7 @@ class _SafeState extends State<Safe> {
     'assets/icons/mapIcon.png',
     'assets/icons/textIcon.png',
     'assets/icons/paintIcon.png',
+    'assets/icons/bmiIcon.png',
   ];
 
   final List<String> _widgetDesc = <String>[
@@ -110,6 +113,7 @@ class _SafeState extends State<Safe> {
     "Find your place in the world.",
     "Get Latin-script text from an image.",
     "Draw. Enjoy. Repeat.",
+    "Simple calculator",
   ];
 
   @override
