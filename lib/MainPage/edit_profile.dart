@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myapp2/MainPage/settings.dart';
+import 'package:myapp2/NewLogin/Login/shared/firebase_authentication.dart';
 
 import '../colors.dart';
 
-// TODO: FOR EACH ACCOUNT WORKING PROFILE. WITH PFP AND BIO
+// TODO: CHANGE USERNAME, PHONE NUMB FUNCTIONALITY / CHANGE NULL IN PHONE NUMBER TO SOME DEFAULT VALUE // ADD ABOUT ME
 
 class EditProfilePage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final ImagePicker picker = ImagePicker();
   final myController = TextEditingController();
   bool showPassword = false;
+  FirebaseAuthentication auth = FirebaseAuthentication();
 
   @override
   void dispose() {
@@ -25,39 +27,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  Widget buildTextField(
-      String labelText, String placeholder, bool isPasswordTextField) {
+  Widget userInfoPanel(
+      String labelText, String userInfo) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextField(
-        style: TextStyle(
-            color: (cllii.click == false) ? Colors.black : Colors.white),
-        obscureText: isPasswordTextField ? showPassword : false,
-        decoration: InputDecoration(
-            suffixIcon: isPasswordTextField
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        showPassword = !showPassword;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                    ),
-                  )
-                : null,
-            contentPadding: EdgeInsets.only(bottom: 3),
-            labelText: labelText,
-            labelStyle: TextStyle(
-                color: (cllii.click == false) ? Colors.black : Colors.white),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-              fontSize: 16,
-              color: (cllii.click == false) ? Colors.black26 : Colors.white38,
-            )),
-      ),
+      padding: const EdgeInsets.only(bottom: 25.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            labelText + " : ",
+            style: TextStyle(
+                color: Colors.white, fontSize: 15
+            ),
+          ),
+          Text(
+            userInfo,
+            style: TextStyle(
+              color: yellow, fontSize: 24
+            )
+          ),
+        ]
+      )
     );
   }
 
@@ -141,52 +131,29 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ),
               SizedBox(
-                height: 35,
+                height: 20,
               ),
-              buildTextField("Full Name", "simple app", false),
-              buildTextField("E-mail", "simple@gmail.com", false),
-              buildTextField("Password", "********", true),
-              buildTextField("Location", "SDU, Kaskelen", false),
+              // TODO ADD ABOUT ME AND DO A PFP'S
+              // Expanded(
+              //   child: Container(
+              //     height: 120,
+              //     decoration: BoxDecoration(border: Border.all()),
+              //     padding: EdgeInsets.all(8),
+              //     alignment: Alignment.topLeft,
+              //     child: SelectableText(
+              //       "ABOUT ME: ",
+              //       textAlign: TextAlign.center,
+              //     ),
+              //   ),
+              // ),
               SizedBox(
-                height: 35,
+                height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  OutlineButton(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text("CANCEL",
-                        style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: (cllii.click == false)
-                              ? Colors.black
-                              : Colors.white,
-                        )),
-                  ),
-                  RaisedButton(
-                    onPressed: () {},
-                    color: Colors.green,
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Text(
-                      "SAVE",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.white),
-                    ),
-                  )
-                ],
-              )
+              userInfoPanel("User Name", auth.getUserName().toString()),
+              userInfoPanel("E-mail", auth.getUserEmail().toString()),
+              userInfoPanel("Joined Us", auth.getCreationTime().toString().substring(0,10)),
+              userInfoPanel("Phone Number", auth.getPhoneNumber().toString()),
+
             ],
           ),
         ),

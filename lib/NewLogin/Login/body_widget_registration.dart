@@ -9,6 +9,7 @@ import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/NewLogin/Login/body_widget.dart';
 import 'package:myapp2/NewLogin/Login/login_screen.dart';
+import 'package:myapp2/NewLogin/Login/shared/firebase_authentication.dart';
 import 'package:myapp2/login/login.dart';
 import 'background_widget.dart';
 import 'rounded_input.dart';
@@ -25,6 +26,7 @@ class BodyWidgetRegistration extends StatefulWidget {
 class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
   final _auth = FirebaseAuth.instance;
   String _email = "";
+  String _username = "";
   String _password = "";
   bool showSpinner = false;
   // @override
@@ -43,7 +45,7 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
         inAsyncCall: showSpinner,
         child: BackgroundWidget(
           child: ListView(
-            padding: EdgeInsets.only(top: 110),
+            padding: EdgeInsets.only(top: 30),
             children: [
               Form(
                 child: Column(
@@ -54,9 +56,6 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
                             fontSize: 15,
                             color: Colors.black54,
                             fontWeight: FontWeight.bold)),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     SvgPicture.asset(
                       "assets/icons/iconregister.svg",
                       height: size.height * 0.35,
@@ -66,6 +65,13 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
                       hintText: "Your email",
                       onChanged: (value) {
                         _email = value;
+                      },
+                    ),
+                    RoundedInputField(
+                      // txtUserName: txtUserName,
+                      hintText: "Your username",
+                      onChanged: (value) {
+                        _username = value;
                       },
                     ),
                     RoundedPasswordField(
@@ -86,24 +92,13 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
                         press: () async {
                           // print(_email);
                           // print(_password);
-                          setState(() {
-                            showSpinner = true;
-                          });
 
-                          try {
-                            final newUser =
-                                await _auth.createUserWithEmailAndPassword(
-                                    email: _email, password: _password);
-                            if (newUser != null) {
-                              Navigator.push(context,
-                                  BouncyPageRoute(widget: LoginScreen()));
-                            }
-                            setState(() {
-                              showSpinner = false;
-                            });
-                          } catch (e) {
-                            print(e);
-                          }
+                          FirebaseAuthentication auth = FirebaseAuthentication();
+                          // TODO add checks back
+                          auth.createUser(_email, _username, _password);
+
+                          Navigator.push(context,
+                              BouncyPageRoute(widget: LoginScreen()));
                         }),
                   ],
                 ),

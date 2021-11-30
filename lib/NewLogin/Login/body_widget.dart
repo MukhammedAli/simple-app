@@ -94,6 +94,7 @@ class BodyWidgetState extends State<BodyWidget> {
                             final user =
                                 await authSend.signInWithEmailAndPassword(
                                     email: email, password: password);
+                            print(user.user!.displayName);
                             if (user != null) {
                               Navigator.push(
                                   context,
