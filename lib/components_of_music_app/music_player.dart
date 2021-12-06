@@ -142,6 +142,7 @@ class _MusicAppState extends State<MusicApp> {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text(

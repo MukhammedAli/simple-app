@@ -7,6 +7,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:myapp2/BauncyPageRoute.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/NewLogin/Login/shared/firebase_authentication.dart';
+import 'package:myapp2/new_home_page/home_page.dart';
 import 'background_widget.dart';
 import 'rounded_input.dart';
 import 'rounded_password.dart';
@@ -99,7 +100,7 @@ class BodyWidgetState extends State<BodyWidget> {
                               Navigator.push(
                                   context,
                                   BouncyPageRoute(
-                                      widget: const ListOfWidgets()));
+                                      widget: const HomePage()));
                             }
                             setState(() {
                               showSpinner = false;
