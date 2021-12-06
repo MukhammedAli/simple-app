@@ -41,6 +41,35 @@ class BodyWidgetState extends State<BodyWidget> {
   //   super.initState();
   // }
 
+  showAlertDialog(BuildContext context) {
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error."),
+      content: Text("Email or password is incorrect."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -94,7 +123,7 @@ class BodyWidgetState extends State<BodyWidget> {
                             final user =
                                 await authSend.signInWithEmailAndPassword(
                                     email: email, password: password);
-                            print(user.user!.displayName);
+                            // print(user.user!.displayName);
                             if (user != null) {
                               Navigator.push(
                                   context,
@@ -104,8 +133,12 @@ class BodyWidgetState extends State<BodyWidget> {
                             setState(() {
                               showSpinner = false;
                             });
-                          } catch (e) {}
-                          ;
+                          } catch (e) {
+                            showAlertDialog(context);
+                            setState(() {
+                              showSpinner = false;
+                            });
+                          };
                         },
                         color: Colors.blueAccent,
                       ),

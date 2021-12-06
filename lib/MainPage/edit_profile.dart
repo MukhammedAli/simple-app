@@ -15,10 +15,27 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   late PickedFile imageFile;
+  bool _isEditingText = false;
+  String newNum = "";
+  String newName = "";
+  int _sex = 1;
   final ImagePicker picker = ImagePicker();
-  final myController = TextEditingController();
+  late TextEditingController myController = TextEditingController();
   bool showPassword = false;
   FirebaseAuthentication auth = FirebaseAuthentication();
+
+  @override
+  void initState() {
+    super.initState();
+    newNum = auth.getUserPhone();
+    newName = auth.getUserName();
+    if(auth.getUserSex() == 'Female'){
+      _sex = 2;
+    }
+    else{
+      _sex = 1;
+    }
+  }
 
   @override
   void dispose() {
@@ -43,7 +60,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           Text(
             userInfo,
             style: TextStyle(
-              color: yellow, fontSize: 24
+              color: Colors.yellow, fontSize: 24
             )
           ),
         ]
@@ -149,11 +166,69 @@ class _EditProfilePageState extends State<EditProfilePage> {
               SizedBox(
                 height: 10,
               ),
-              userInfoPanel("User Name", auth.getUserName().toString()),
+              const Text(
+                "Name : ",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 15
+                ),
+              ),
+              changeName(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 25.0),
+              ),
               userInfoPanel("E-mail", auth.getUserEmail().toString()),
-              userInfoPanel("Joined Us", auth.getCreationTime().toString().substring(0,10)),
-              userInfoPanel("Phone Number", auth.getPhoneNumber().toString()),
+              userInfoPanel("Joined Us", reformatDate(auth.getCreationTime().toString().substring(0,10))),
+              const Text(
+                "Phone : ",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 15
+                ),
+              ),
+              changePhone(),
+              const Padding(
+              padding: EdgeInsets.only(bottom: 25.0),
+              ),
+              const Text(
+                "Sex : ",
+                style: TextStyle(
+                    color: Colors.white, fontSize: 15
+                ),
+              ),
+            DropdownButtonHideUnderline(
+              child: DropdownButton(
+                dropdownColor: dark,
+              value: _sex,
+              items: const [
+              DropdownMenuItem(
+                child: Text(
+                  "Male",
+                    style: TextStyle(
+                        color: Colors.yellow, fontSize: 24
+                    )
+                ),
+                value: 1,
+              ),
+              DropdownMenuItem(
+                child: Text("Female",
+                    style: TextStyle(
+                        color: Colors.yellow, fontSize: 24
+                    )
+                ),
+                value: 2,
+              )],
 
+              onChanged: (int? value) {
+                setState(() {
+                  _sex = value!;
+                  if(_sex == 1){
+                    auth.updateUserSex('Male', auth.getCurrentUser());
+                  }
+                  else{
+                    auth.updateUserSex('Female', auth.getCurrentUser());
+                  }
+                });
+              },),
+              ),
             ],
           ),
         ),
@@ -209,40 +284,173 @@ class _EditProfilePageState extends State<EditProfilePage> {
     });
   }
 
-  Widget buildTextFieldName(
-      String labelText, String placeholder, bool isPasswordTextField) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 35.0),
-      child: TextField(
-        controller: myController,
-        style: TextStyle(
-            color: (cllii.click == false) ? Colors.black : Colors.white),
-        obscureText: isPasswordTextField ? showPassword : false,
-        decoration: InputDecoration(
-            suffixIcon: isPasswordTextField
-                ? IconButton(
-                    onPressed: () {
-                      setState(() {
-                        showPassword = !showPassword;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Colors.grey,
-                    ),
-                  )
-                : null,
-            contentPadding: EdgeInsets.only(bottom: 3),
-            labelText: labelText,
-            labelStyle: TextStyle(
-                color: (cllii.click == false) ? Colors.black : Colors.white),
-            floatingLabelBehavior: FloatingLabelBehavior.always,
-            hintText: placeholder,
-            hintStyle: TextStyle(
-              fontSize: 16,
-              color: (cllii.click == false) ? Colors.black26 : Colors.white38,
-            )),
-      ),
+  String reformatDate(String date){
+    String day = date.substring(8,10);
+    String month = date.substring(5,7);
+    String year = date.substring(0,4);
+
+    switch(month){
+      case "1":
+        month = "January";
+        break;
+      case "2":
+        month = "February";
+        break;
+      case "3":
+        month = "March";
+        break;
+      case "4":
+        month = "April";
+        break;
+      case "5":
+        month = "May";
+        break;
+      case "6":
+        month = "June";
+        break;
+      case "7":
+        month = "July";
+        break;
+      case "8":
+        month = "August";
+        break;
+      case "9":
+        month = "September";
+        break;
+      case "10":
+        month = "October";
+        break;
+      case "11":
+        month = "November";
+        break;
+      case "12":
+        month = "December";
+        break;
+    }
+
+    return month + " " + day + ", " + year;
+  }
+
+  showAlertDialog(BuildContext context, String type) {
+    Text letter = Text("Your phone number contains letter!");
+    Text length = Text("Your phone number length is incorrect!\n You can provide number in format +7 or 8");
+    Text toShow = Text("");
+
+    if(type == 'length'){
+      toShow = length;
+    }
+    else{
+      toShow = letter;
+    }
+
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert!"),
+      content: toShow,
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  bool isNumRight(String phone){
+    if(phone.contains('+', 0) && phone.length == 12 && !phone.contains(RegExp(r'[A-Z]')) && !phone.contains(RegExp(r'[a-z]'))) {
+      auth.updateUserPhone(phone, auth.getCurrentUser());
+      return true;
+    }
+    else if(phone.contains('8', 0) && phone.length == 11 && !phone.contains(RegExp(r'[A-Z]')) && !phone.contains(RegExp(r'[a-z]'))){
+      auth.updateUserPhone(phone, auth.getCurrentUser());
+      return true;
+    }
+    else if(phone.contains(RegExp(r'[A-Z]')) || phone.contains(RegExp(r'[a-z]'))){
+      showAlertDialog(context, 'letter');
+      return false;
+    }
+    showAlertDialog(context, 'length');
+    return false;
+  }
+
+  Widget changePhone() {
+    myController = TextEditingController(text: newNum);
+    if (_isEditingText) {
+      return Center(
+        child: TextField(
+          onSubmitted: (newValue){
+            setState(() {
+              if(isNumRight(newValue)) {
+                newNum = newValue;
+              }
+              _isEditingText = false;
+            });
+          },
+          autofocus: true,
+          style: TextStyle(
+              color: Colors.yellow, fontSize: 24
+          ),
+          controller: myController,
+        ),
+      );
+    }
+    return InkWell(
+        onTap: () {
+      setState(() {
+        _isEditingText = true;
+      });
+    },
+    child:
+    Text(
+      newNum,
+      style: TextStyle(
+          color: Colors.yellow, fontSize: 24
+      ),
+    ));
+  }
+
+  Widget changeName() {
+    myController = TextEditingController(text: newName);
+    if (_isEditingText) {
+      return Center(
+        child: TextField(
+          onSubmitted: (newValue){
+            setState(() {
+              newName = newValue;
+              auth.updateUserName(newName, auth.getCurrentUser());
+              _isEditingText = false;
+            });
+          },
+          autofocus: true,
+          style: TextStyle(
+              color: Colors.yellow, fontSize: 24
+          ),
+          controller: myController,
+        ),
+      );
+    }
+    return InkWell(
+        onTap: () {
+          setState(() {
+            _isEditingText = true;
+          });
+        },
+        child:
+        Text(
+          newName,
+          style: TextStyle(
+              color: Colors.yellow, fontSize: 24
+          ),
+        ));
   }
 }

@@ -37,6 +37,44 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
   //   });
   // }
 
+  showAlertDialog(BuildContext context) {
+
+
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    String content = "Error.";
+
+    // if(error == 0) {
+    //   content = "Email is already in use.";
+    // }
+    // else if(error == 1){
+    //   content = "Password must be at least 6 characters long.";
+    // }
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Error."),
+    content: Text(content),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -45,7 +83,7 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
         inAsyncCall: showSpinner,
         child: BackgroundWidget(
           child: ListView(
-            padding: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.only(top: 70),
             children: [
               Form(
                 child: Column(
@@ -80,12 +118,12 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
                         _password = value;
                       },
                     ),
-                    RoundedPasswordField(
+                    // RoundedPasswordField(
                         //txtPassword: txtPassword,
                         // onChanged: (value) {
                         //   _password = value;
                         // },
-                        ),
+                        // ),
                     RoundedButton(
                         text: "REGISTER",
                         color: Color(0xFF0288D1),
@@ -93,12 +131,17 @@ class _BodyWidgetRegistrationState extends State<BodyWidgetRegistration> {
                           // print(_email);
                           // print(_password);
 
-                          FirebaseAuthentication auth = FirebaseAuthentication();
-                          // TODO add checks back
-                          auth.createUser(_email, _username, _password);
 
-                          Navigator.push(context,
-                              BouncyPageRoute(widget: LoginScreen()));
+                          FirebaseAuthentication auth = FirebaseAuthentication();
+                          if(_password.length > 5) {
+                            // TODO add checks back
+                            auth.createUser(_email, _username, _password);
+                              Navigator.push(context,
+                                  BouncyPageRoute(widget: LoginScreen()));
+                            }
+                          else{
+                            print("password must be at least 6 characters.");
+                          }
                         }),
                   ],
                 ),
