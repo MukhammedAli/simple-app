@@ -11,6 +11,7 @@ class _TextRecognitionState extends State<TextRecognition> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.lightBlue,
       title: FittedBox(
               fit: BoxFit.fitWidth,

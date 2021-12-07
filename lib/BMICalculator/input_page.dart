@@ -33,6 +33,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       backgroundColor: const Color(0xFF0A0E21),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -53,7 +54,6 @@ class _InputPageState extends State<InputPage> {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFF0A0E21),
-        automaticallyImplyLeading: true,
         toolbarHeight: 70,
       ),
       bottomNavigationBar: Material(

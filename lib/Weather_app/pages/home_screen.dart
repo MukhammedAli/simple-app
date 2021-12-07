@@ -5,6 +5,7 @@ import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/Weather_app/constants.dart';
 import 'package:myapp2/Weather_app/pages/city_screen.dart';
 import 'package:myapp2/Weather_app/services/weather.dart';
+import 'package:myapp2/new_home_page/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
   // ignore: use_key_in_widget_constructors
@@ -143,14 +144,15 @@ class _HomeScreenState extends State<HomeScreen> {
   var count = 0;
   AppBar buildAppBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       leading: IconButton(
         icon: const Icon(
           Icons.arrow_back,
           color: Colors.white,
           size: 40,
         ),
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const ListOfWidgets(),
+        onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const HomePage(),
         )),
       ),
       actions: <Widget>[

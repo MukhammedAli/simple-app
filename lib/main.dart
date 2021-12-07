@@ -12,6 +12,7 @@ import 'package:myapp2/TimeApp/choose_loc.dart';
 import 'package:myapp2/loading_page.dart';
 import 'package:myapp2/MainPage/choose.dart';
 import 'package:myapp2/GoogleMap/map.dart';
+import 'package:myapp2/new_home_page/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,7 @@ void main() async {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
+        '/home-page': (context) => const HomePage(),
         '/chat': (context) => const ChatApp(),
         '/first': (context) => const LoadingPage(),
         '/second': (context) => const ListOfWidgets(),

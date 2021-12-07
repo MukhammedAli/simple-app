@@ -19,6 +19,7 @@ class TasksScreen extends StatelessWidget {
         },
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.lightBlue,
         centerTitle: true,
         title: Text(

@@ -230,7 +230,6 @@ class _SafeState extends State<Safe> {
                                   ],
                                 ),
                               ),
-
                             ],
                           ),
                         ),

@@ -106,6 +106,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
+          centerTitle: true,
           title: new Text("Calculator"),
         ),
         body: new Container(

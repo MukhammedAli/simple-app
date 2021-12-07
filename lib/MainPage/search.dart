@@ -30,7 +30,6 @@ class _SearchState extends State<Search> {
     return Scaffold(
       backgroundColor: (cllii.click == false) ? Colors.white : dark,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.search, size: 40, color: white),
