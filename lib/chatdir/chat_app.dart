@@ -60,7 +60,7 @@ class _ChatAppState extends State<ChatApp> {
         leading: null,
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () {
                 messageStream();
               }),
@@ -73,7 +73,7 @@ class _ChatAppState extends State<ChatApp> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          MessagesStream(),
+          const MessagesStream(),
           Container(
               decoration: kMessageContainerDecoration,
               child: Row(

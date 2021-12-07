@@ -19,14 +19,14 @@ class _MapScreenState extends State<MapScreen> {
 
   late GoogleMapController _googleMapController;
 
-  Marker _sdu = Marker (
+  final Marker _sdu = Marker (
     markerId: const MarkerId("sdu"),
     position: sduPos,
     infoWindow: const InfoWindow(title: "SDU University") ,
     icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
   );
 
-  Marker _home = const Marker (
+  final Marker _home = const Marker (
     markerId: MarkerId("home"),
     position: homePos,
     infoWindow: InfoWindow(title: "HOME") ,

@@ -29,10 +29,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.initState();
     newNum = auth.getUserPhone();
     newName = auth.getUserName();
-    if(auth.getUserSex() == 'Female'){
+    if (auth.getUserSex() == 'Female') {
       _sex = 2;
-    }
-    else{
+    } else {
       _sex = 1;
     }
   }
@@ -44,28 +43,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
-  Widget userInfoPanel(
-      String labelText, String userInfo) {
+  Widget userInfoPanel(String labelText, String userInfo) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 25.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        padding: const EdgeInsets.only(bottom: 25.0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             labelText + " : ",
-            style: TextStyle(
-                color: Colors.white, fontSize: 15
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 15),
           ),
-          Text(
-            userInfo,
-            style: TextStyle(
-              color: Colors.yellow, fontSize: 24
-            )
-          ),
-        ]
-      )
-    );
+          Text(userInfo,
+              style: const TextStyle(color: Colors.yellow, fontSize: 24)),
+        ]));
   }
 
   @override
@@ -75,7 +63,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         backgroundColor: topaz,
         elevation: 1,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Edit Profile",
           style: TextStyle(
             fontSize: 25,
@@ -84,7 +72,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       ),
       body: Container(
         color: (cllii.click == false) ? Colors.white : dark,
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -110,7 +98,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 offset: Offset(0, 10))
                           ],
                           shape: BoxShape.circle,
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
                                 "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250",
@@ -138,7 +126,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 builder: ((builder) => bottomSheet()),
                               );
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.edit,
                               color: Colors.white,
                             ),
@@ -147,7 +135,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               // TODO ADD ABOUT ME AND DO A PFP'S
@@ -163,71 +151,61 @@ class _EditProfilePageState extends State<EditProfilePage> {
               //     ),
               //   ),
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               const Text(
                 "Name : ",
-                style: TextStyle(
-                    color: Colors.white, fontSize: 15
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               changeName(),
               const Padding(
                 padding: EdgeInsets.only(bottom: 25.0),
               ),
               userInfoPanel("E-mail", auth.getUserEmail().toString()),
-              userInfoPanel("Joined Us", reformatDate(auth.getCreationTime().toString().substring(0,10))),
+              userInfoPanel(
+                  "Joined Us",
+                  reformatDate(
+                      auth.getCreationTime().toString().substring(0, 10))),
               const Text(
                 "Phone : ",
-                style: TextStyle(
-                    color: Colors.white, fontSize: 15
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ),
               changePhone(),
               const Padding(
-              padding: EdgeInsets.only(bottom: 25.0),
+                padding: EdgeInsets.only(bottom: 25.0),
               ),
               const Text(
                 "Sex : ",
-                style: TextStyle(
-                    color: Colors.white, fontSize: 15
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ),
-            DropdownButtonHideUnderline(
-              child: DropdownButton(
-                dropdownColor: dark,
-              value: _sex,
-              items: const [
-              DropdownMenuItem(
-                child: Text(
-                  "Male",
-                    style: TextStyle(
-                        color: Colors.yellow, fontSize: 24
+              DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  dropdownColor: dark,
+                  value: _sex,
+                  items: const [
+                    DropdownMenuItem(
+                      child: Text("Male",
+                          style: TextStyle(color: Colors.yellow, fontSize: 24)),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Female",
+                          style: TextStyle(color: Colors.yellow, fontSize: 24)),
+                      value: 2,
                     )
+                  ],
+                  onChanged: (int? value) {
+                    setState(() {
+                      _sex = value!;
+                      if (_sex == 1) {
+                        auth.updateUserSex('Male', auth.getCurrentUser());
+                      } else {
+                        auth.updateUserSex('Female', auth.getCurrentUser());
+                      }
+                    });
+                  },
                 ),
-                value: 1,
-              ),
-              DropdownMenuItem(
-                child: Text("Female",
-                    style: TextStyle(
-                        color: Colors.yellow, fontSize: 24
-                    )
-                ),
-                value: 2,
-              )],
-
-              onChanged: (int? value) {
-                setState(() {
-                  _sex = value!;
-                  if(_sex == 1){
-                    auth.updateUserSex('Male', auth.getCurrentUser());
-                  }
-                  else{
-                    auth.updateUserSex('Female', auth.getCurrentUser());
-                  }
-                });
-              },),
               ),
             ],
           ),
@@ -240,35 +218,35 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20,
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             "Choose Profile photo",
             style: TextStyle(fontSize: 20.0),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FlatButton.icon(
-                icon: Icon(Icons.camera),
+                icon: const Icon(Icons.camera),
                 onPressed: () {
                   takePhoto(ImageSource.camera);
                 },
-                label: Text("Camera"),
+                label: const Text("Camera"),
               ),
               FlatButton.icon(
-                icon: Icon(Icons.image),
+                icon: const Icon(Icons.image),
                 onPressed: () {
                   takePhoto(ImageSource.gallery);
                 },
-                label: Text("Gallery"),
+                label: const Text("Gallery"),
               )
             ],
           )
@@ -284,12 +262,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
     });
   }
 
-  String reformatDate(String date){
-    String day = date.substring(8,10);
-    String month = date.substring(5,7);
-    String year = date.substring(0,4);
+  String reformatDate(String date) {
+    String day = date.substring(8, 10);
+    String month = date.substring(5, 7);
+    String year = date.substring(0, 4);
 
-    switch(month){
+    switch (month) {
       case "1":
         month = "January";
         break;
@@ -332,26 +310,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   showAlertDialog(BuildContext context, String type) {
-    Text letter = Text("Your phone number contains letter!");
-    Text length = Text("Your phone number length is incorrect!\n You can provide number in format +7 or 8");
-    Text toShow = Text("");
+    Text letter = const Text("Your phone number contains letter!");
+    Text length = const Text(
+        "Your phone number length is incorrect!\n You can provide number in format +7 or 8");
+    Text toShow = const Text("");
 
-    if(type == 'length'){
+    if (type == 'length') {
       toShow = length;
-    }
-    else{
+    } else {
       toShow = letter;
     }
 
     Widget okButton = TextButton(
-      child: Text("OK"),
+      child: const Text("OK"),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Alert!"),
+      title: const Text("Alert!"),
       content: toShow,
       actions: [
         okButton,
@@ -366,16 +344,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  bool isNumRight(String phone){
-    if(phone.contains('+', 0) && phone.length == 12 && !phone.contains(RegExp(r'[A-Z]')) && !phone.contains(RegExp(r'[a-z]'))) {
+  bool isNumRight(String phone) {
+    if (phone.contains('+', 0) &&
+        phone.length == 12 &&
+        !phone.contains(RegExp(r'[A-Z]')) &&
+        !phone.contains(RegExp(r'[a-z]'))) {
       auth.updateUserPhone(phone, auth.getCurrentUser());
       return true;
-    }
-    else if(phone.contains('8', 0) && phone.length == 11 && !phone.contains(RegExp(r'[A-Z]')) && !phone.contains(RegExp(r'[a-z]'))){
+    } else if (phone.contains('8', 0) &&
+        phone.length == 11 &&
+        !phone.contains(RegExp(r'[A-Z]')) &&
+        !phone.contains(RegExp(r'[a-z]'))) {
       auth.updateUserPhone(phone, auth.getCurrentUser());
       return true;
-    }
-    else if(phone.contains(RegExp(r'[A-Z]')) || phone.contains(RegExp(r'[a-z]'))){
+    } else if (phone.contains(RegExp(r'[A-Z]')) ||
+        phone.contains(RegExp(r'[a-z]'))) {
       showAlertDialog(context, 'letter');
       return false;
     }
@@ -388,53 +371,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
     if (_isEditingText) {
       return Center(
         child: TextField(
-          onSubmitted: (newValue){
+          onSubmitted: (newValue) {
             setState(() {
-              if(isNumRight(newValue)) {
+              if (isNumRight(newValue)) {
                 newNum = newValue;
               }
               _isEditingText = false;
             });
           },
           autofocus: true,
-          style: TextStyle(
-              color: Colors.yellow, fontSize: 24
-          ),
-          controller: myController,
-        ),
-      );
-    }
-    return InkWell(
-        onTap: () {
-      setState(() {
-        _isEditingText = true;
-      });
-    },
-    child:
-    Text(
-      newNum,
-      style: TextStyle(
-          color: Colors.yellow, fontSize: 24
-      ),
-    ));
-  }
-
-  Widget changeName() {
-    myController = TextEditingController(text: newName);
-    if (_isEditingText) {
-      return Center(
-        child: TextField(
-          onSubmitted: (newValue){
-            setState(() {
-              newName = newValue;
-              auth.updateUserName(newName, auth.getCurrentUser());
-              _isEditingText = false;
-            });
-          },
-          autofocus: true,
-          style: TextStyle(
-              color: Colors.yellow, fontSize: 24
-          ),
+          style: const TextStyle(color: Colors.yellow, fontSize: 24),
           controller: myController,
         ),
       );
@@ -445,12 +391,39 @@ class _EditProfilePageState extends State<EditProfilePage> {
             _isEditingText = true;
           });
         },
-        child:
-        Text(
+        child: Text(
+          newNum,
+          style: const TextStyle(color: Colors.yellow, fontSize: 24),
+        ));
+  }
+
+  Widget changeName() {
+    myController = TextEditingController(text: newName);
+    if (_isEditingText) {
+      return Center(
+        child: TextField(
+          onSubmitted: (newValue) {
+            setState(() {
+              newName = newValue;
+              auth.updateUserName(newName, auth.getCurrentUser());
+              _isEditingText = false;
+            });
+          },
+          autofocus: true,
+          style: const TextStyle(color: Colors.yellow, fontSize: 24),
+          controller: myController,
+        ),
+      );
+    }
+    return InkWell(
+        onTap: () {
+          setState(() {
+            _isEditingText = true;
+          });
+        },
+        child: Text(
           newName,
-          style: TextStyle(
-              color: Colors.yellow, fontSize: 24
-          ),
+          style: const TextStyle(color: Colors.yellow, fontSize: 24),
         ));
   }
 }
